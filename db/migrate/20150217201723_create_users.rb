@@ -1,11 +1,11 @@
-class CreateProducers < ActiveRecord::Migration
+class CreateUsers < ActiveRecord::Migration
   def change
-    create_table :producers do |t|
+    create_table :users do |t|
       t.string :name, null: false
       t.string :email, null: false, uniqueness: true
       t.string :password_digest, null: false
-
-      t.timestamps
+      t.timestamps 
+      t.integer :auth_id, default: 3
     end
   end
 end
