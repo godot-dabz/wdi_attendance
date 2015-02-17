@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+<<<<<<< HEAD
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -54,4 +55,8 @@ Rails.application.routes.draw do
   #     resources :products
   #   end
   get ''
+=======
+  root "welcome#login"
+  resources :producers
+>>>>>>> c31ef0a35c16fd170f2242f2c934897138aedf21
 end
