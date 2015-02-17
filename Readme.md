@@ -15,6 +15,7 @@ An Instructor
 ## A student
 1. can log in
 1. can see his late/excused/unexcused absences
+1. can send a text to excuse hiself for an absence
 
 ## A Producer
 1. can log in
