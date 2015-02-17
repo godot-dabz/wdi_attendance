@@ -1,0 +1,10 @@
+<h1>Please Login</h1>
+
+
+<%= form_for @user do |t| %>
+  <%= t.label :email, "Email" %>
+  <%= t.text_field :email %>
+  <%= t.label :password, "Password" %>
+  <%= t.text_field :password %>
+  <%= t.submit %>
+<% end %>
