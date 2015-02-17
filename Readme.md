@@ -1,6 +1,6 @@
-## User Story
+#### User Story
 
-An Istructor
+##An Instructor
 1. can log in
 1. can enter a class name, etc.
 1. can view all of his own classes
