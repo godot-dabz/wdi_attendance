@@ -1,10 +1,12 @@
 class InstructorsController < ApplicationController
 	def index
-		@users = User.find_by(role: params[:role])
+		@users = User.all
+    binding.pry
 	end
 
 	def show
 		@user = User.find(params[:id])
+    binding.pry
 	end
 
 	# def edit

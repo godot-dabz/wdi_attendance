@@ -17,7 +17,6 @@ class UsersController < ApplicationController
       user.auth_level = 2
     end
       redirect_to '/session'
-    end
   end
 
   def user_params
