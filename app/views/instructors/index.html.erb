@@ -5,7 +5,7 @@
 
 <h1>Students</h1>
 	<ul>
-		<% @users.each do |student| %>
-			<li><%=link_to student.name, student_path(student) %></li>
+		<% @users.each do |user| %>
+			<li><%=link_to user.name, user_path(user) %></li>
 		<% end %>
 	</ul>

@@ -1,6 +1,6 @@
 class InstructorsController < ApplicationController
 	def index
-		@users = User.all
+		@users = User.find_by(role: params[:role])
 	end
 
 	def show
