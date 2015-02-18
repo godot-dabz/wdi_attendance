@@ -14,10 +14,10 @@ Rails.application.routes.draw do
   # Example resource route (maps HTTP verbs to controller actions automatically):
 
     resources :users
-    resources :instructors 
+    resources :instructors
 
     resources :sessions
-    resources :users
+
 
 
   # Example resource route with options:
