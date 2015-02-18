@@ -5,7 +5,6 @@ class CreateUser < ActiveRecord::Migration
       t.string :email, null:false, uniqueness: true
       t.string :role
       t.string :password_digest
-
       t.timestamps
     end
   end

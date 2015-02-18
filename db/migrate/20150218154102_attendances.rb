@@ -1,4 +1,4 @@
-class CreateAttendances < ActiveRecord::Migration
+class Attendances < ActiveRecord::Migration
   def change
     create_table :attendances do |t|
       t.string :email, null: false

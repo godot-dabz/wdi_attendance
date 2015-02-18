@@ -15,6 +15,7 @@ Rails.application.routes.draw do
 
     resources :users
     resources :instructors
+    resources :students
     resources :producers
     resources :sessions
 
