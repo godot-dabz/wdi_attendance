@@ -15,7 +15,8 @@ Rails.application.routes.draw do
 
     resources :users
     resources :instructors
-
+    get 'students' => 'students#index'
+    get '/students/:id' => 'students#show'
     resources :sessions
 
 
