@@ -1,27 +1,27 @@
-# class InstructorsController < ApplicationController 
-# 	def index 
-# 		@students = Student.all
-# 	end 
+class InstructorsController < ApplicationController
+	def index
+		@User = User.all
+	end
 
-# # 	def show 
-# # 		@student = Student.find(params[:id])
-# # 	end 
+	def show
+		@user = User.find(params[:id])
+	end
 
-# # 	def edit	
-# # 	end
+	def edit
+	end
 
-# # 	def new
-# # 	end 
+	def new
+	end
 
-# # 	def update
-		
-# # 	end
+	def update
 
-# # 	def destroy 
-# # 	end
+	end
 
-# # 	def create		
-# # 	end
+	def destroy
+	end
+
+	def create
+	end
 
 
-# # end 
+end
