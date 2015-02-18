@@ -1,11 +1,6 @@
-<!-- Index should display total absences/lates for the entire class and then each individual student in the table. Then when clicking on individual students, the instructor should be able to edit the students records. -->
-
-
-
-
-<h1>Students</h1>
+<h1> Students </h1>
 	<ul>
 		<% @users.each do |user| %>
-			<li><%=link_to user.name, user_path(user) %></li>
+			<li><%= user.name %>
 		<% end %>
 	</ul>
