@@ -8,7 +8,7 @@ class UsersController < ApplicationController
     user = User.create user_params
     url = 'http://104.131.73.180/api/v1/leads'
     @apiusers = HTTParty.get(url)
-    binding.pry
+    # binding.pry
     # this is an email list form the api of all emails of the students in the api. this needs to get changed once the api gets update to include instructors
     emails = @apiusers["leads"].map do |person|
       person["contact"]["email"]
