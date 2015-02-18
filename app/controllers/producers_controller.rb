@@ -22,6 +22,7 @@ class ProducersController < ApplicationController
     emails = students["students"].map do |student|
       student["contact"]["email"]
     end
+
     @cohort_students
   end
 
