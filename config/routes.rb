@@ -13,6 +13,10 @@ Rails.application.routes.draw do
 
   # Example resource route (maps HTTP verbs to controller actions automatically):
     resources :sessions
+<<<<<<< HEAD
+=======
+    resources :users
+>>>>>>> 27f5dab870cef1408bf14d09b79e17b5bdf22344
 
   # Example resource route with options:
   #   resources :products do

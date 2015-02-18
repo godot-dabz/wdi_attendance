@@ -5,6 +5,14 @@
   <%= label_tag(:email, "Email") %>
   <%= text_field_tag(:email) %>
   <%= label_tag(:password, "Password") %>
+<<<<<<< HEAD
   <%= text_field_tag (:password) %>
   <%= submit_tag("Create") %>
 <% end %>
+=======
+  <%= password_field_tag (:password) %>
+  <%= submit_tag("Create") %>
+<% end %>
+
+<%= button_to "Register", new_user_path, method: "get" %>
+>>>>>>> 27f5dab870cef1408bf14d09b79e17b5bdf22344
