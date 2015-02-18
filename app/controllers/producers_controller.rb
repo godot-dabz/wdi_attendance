@@ -1,7 +1,7 @@
-class ProducersController < ApplicationController 
-	def create
-	end
+# class ProducersController < ApplicationController 
+# 	def create
+# 	end
 
-	def 
-	end 
-end 
+# 	def 
+# 	end 
+# end 
