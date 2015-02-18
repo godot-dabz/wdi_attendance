@@ -1,4 +1,4 @@
-class Student < ActiveRecord::Base
-  has_one :class
-  has_many :instructors
+class Student < User
+  belongs_to :cohort
+  has_many   :instructors, through: :cohort
 end

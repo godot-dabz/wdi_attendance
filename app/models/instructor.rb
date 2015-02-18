@@ -1,4 +1,4 @@
 class Instructor < User
-  has_one :class
-  has_one :producer
+  belongs_to :cohort
+  belongs_to :producer
 end
