@@ -1,27 +1,29 @@
 class InstructorsController < ApplicationController
 	def index
-		@User = User.all
+		@users = User.all
+    @attendances = Attendance.all
 	end
 
 	def show
 		@user = User.find(params[:id])
+    @attendance = Attendance.find(params[:id])
 	end
 
-	def edit
-	end
+	# def edit
+	# end
 
-	def new
-	end
+	# def new
+	# end
 
-	def update
+	# def update
 
-	end
+	# end
 
-	def destroy
-	end
+	# def destroy
+	# end
 
-	def create
-	end
+	# def create
+	# end
 
 
 end
