@@ -1,6 +1,6 @@
 class InstructorsController < ApplicationController
 
-# create a sessions variable and then get the session params
+# PJ told us create a sessions variable and then get the session params
 
   def new
     employee_url = "http://104.131.73.180/api/v1/employees"
