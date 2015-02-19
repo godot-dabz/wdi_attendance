@@ -1,7 +1,7 @@
 <h1>Add a Cohort:</h1>
 
 <% @cohorts["cohorts"].each do |cohort| %>
-  <h3><%= cohort["name"] %></h3>
+  <h3><%= link_to cohort["name"], new_cohort_student_path(cohort["id"]) %></h3>
   <%= button_to "Add", "/cohorts", params: {
       name: cohort["name"],
       starts_on: cohort["dates"]["starts_on"],
