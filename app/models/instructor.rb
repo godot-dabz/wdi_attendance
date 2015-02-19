@@ -1,4 +1,8 @@
 class Instructor < User
-  has_one :class
-  has_one :producer
+
+  belongs_to :cohort
+  belongs_to :producer
+
+  # has_secure_password
+
 end

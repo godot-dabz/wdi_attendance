@@ -1,12 +1,11 @@
 class InstructorsController < ApplicationController
 	def index
 		@users = User.all
-    binding.pry
 	end
 
 	def show
-		@user = User.find(params[:id])
-    binding.pry
+		@user = User.find_by(params[:id])
+
 	end
 
 	# def edit
