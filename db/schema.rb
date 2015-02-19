@@ -17,11 +17,9 @@ ActiveRecord::Schema.define(version: 20150218225331) do
   enable_extension "plpgsql"
 
   create_table "attendances", force: :cascade do |t|
-    t.string   "email",              null: false
-    t.date     "late"
-    t.date     "unexcused_absences"
-    t.date     "excused_absences"
-    t.integer  "student_id"
+    t.string   "type"
+    t.date     "date"
+    t.integer  "student_id", null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
