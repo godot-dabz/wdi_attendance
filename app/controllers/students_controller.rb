@@ -1,4 +1,17 @@
 class StudentsController < ApplicationController
+
+	def new
+		@cohort_id = params[:cohort_id]
+		students_url = "http://104.131.73.180/api/v1/cohorts/#{@cohort_id}/students"
+		@students = HTTParty.get(students_url)
+	end
+
+	def create
+		student = Student.new student_params
+		student.save
+		redirect_to '/index'
+	end
+
 	def show
 
 		# students_url = "http://104.131.73.180/api/v1/students/"
@@ -17,6 +30,14 @@ class StudentsController < ApplicationController
 		@student_first_names = students.students.map do |student|
 			student["students"][0]["data"]["first"]
 		end
+	end
+
+	def student_params
+		params.permit(
+			:name,
+			:email,
+			:cohort_id
+		)
 	end
 end
 
