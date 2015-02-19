@@ -11,11 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 20150218154102) do
-=======
 ActiveRecord::Schema.define(version: 20150218225331) do
->>>>>>> 0d946074c8897a4b96cec6d527b7db83c1da464f
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,33 +21,19 @@ ActiveRecord::Schema.define(version: 20150218225331) do
     t.date     "late"
     t.date     "unexcused_absences"
     t.date     "excused_absences"
-<<<<<<< HEAD
-=======
-    t.integer  "student_id"
->>>>>>> 0d946074c8897a4b96cec6d527b7db83c1da464f
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-<<<<<<< HEAD
-  create_table "users", force: :cascade do |t|
-    t.string   "name",            null: false
-    t.string   "email",           null: false
-    t.string   "type"
-    t.string   "password_digest"
-=======
   create_table "cohorts", force: :cascade do |t|
     t.string "name"
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "name",           null: false
-    t.string   "email",          null: false
+    t.string   "name",            null: false
+    t.string   "email",           null: false
     t.string   "type"
-    t.integer  "cohort_id"
-    t.integer  "producer_id"
-    t.integer  "instructors_id"
->>>>>>> 0d946074c8897a4b96cec6d527b7db83c1da464f
+    t.string   "password_digest"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
