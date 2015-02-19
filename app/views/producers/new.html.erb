@@ -1,0 +1,10 @@
+<h1>Add a new Producer:</h1>
+
+<% @producers.each do |producer| %>
+  <h3><%= producer["data"]["first"] + " " + producer["data"]["last"] %></h3>
+  <%= button_to "Add", "/producers", params: {
+      name: producer["data"]["first"] + " " + producer["data"]["last"],
+      email: producer["contact"]["email"]
+    },
+    method: "post" %>
+<% end %>

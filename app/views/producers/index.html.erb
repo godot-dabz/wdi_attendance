@@ -1,6 +1,12 @@
-<h1>Hello, <%= @producer.first["data"]["first"] %>! </h1>
+<h1>Hello <%#= @producer.first["data"]["first"] %>! </h1>
 <h2>Here are your cohorts:</h2>
 
+<%# @cohorts.each do |cohort| %>
+  <h3><%#= link_to cohort["name"], producer_path(cohort["id"]) %></h3>
+<%# end %>
+
 <% @cohorts.each do |cohort| %>
-  <h3><%= link_to cohort["name"], producer_path(cohort["id"]) %></h3>
+
+  <h3><%= cohort.name %></h3>
+
 <% end %>
