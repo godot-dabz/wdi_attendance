@@ -3,13 +3,30 @@ class ProducersController < ApplicationController
   def new
     employee_url = "http://104.131.73.180/api/v1/employees"
     employees = HTTParty.get(employee_url)
-    @producers = employees["employees"].select do |employee|
-      employee["role"] == "producer"
+
+    @producers_hash = {}
+
+    employees["employees"].each do |employee|
+      if employee["role"] == "producer"
+        key = employee["id"]
+        @producers_hash[key] = employee
+      end
     end
+
     cohort_url = "http://104.131.73.180/api/v1/cohorts"
-    @cohorts = HTTParty.get(cohort_url)
+    cohorts = HTTParty.get(cohort_url)
+
+    cohorts["cohorts"].each do |cohort|
+      cohort["producer_id"]
+        @producers_hash["cohort"] = cohort["producer_id"]
+    end
+
+    binding.pry
+
     @producer = Producer.new
   end
+
+
 
   def create
     producer = Producer.new producer_params
