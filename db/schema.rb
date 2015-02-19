@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 20150218225331) do
     t.date     "late"
     t.date     "unexcused_absences"
     t.date     "excused_absences"
+    t.integer  "student_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -33,7 +34,6 @@ ActiveRecord::Schema.define(version: 20150218225331) do
     t.string   "name",           null: false
     t.string   "email",          null: false
     t.string   "type"
-    t.integer  "attendance_id"
     t.integer  "cohort_id"
     t.integer  "producer_id"
     t.integer  "instructors_id"

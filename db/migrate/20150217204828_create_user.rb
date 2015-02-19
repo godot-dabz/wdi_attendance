@@ -7,7 +7,6 @@ class CreateUser < ActiveRecord::Migration
       # t.string :password_digest
 
       # students belong to cohort, have one attendance
-      t.references :attendance
       t.references :cohort
 
       # instructors belong to cohort (above), belong to producer
