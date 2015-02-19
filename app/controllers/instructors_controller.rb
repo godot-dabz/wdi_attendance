@@ -4,9 +4,14 @@ class InstructorsController < ApplicationController
 	end
 
 	def show
-		@user = User.find_by(params[:id])
+    @students = User.where(role: "student")
+    binding.pry
 
-	end
+  end
+
+
+# create a sessions variable and then get the session params
+
 
 	# def edit
 	# end

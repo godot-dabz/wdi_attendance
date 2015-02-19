@@ -4,6 +4,13 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
+  def show
+    @user = User.find(params[:id])
+
+    render :show
+    binding.pry
+  end
+
   def create
     user = User.create user_params
     url = 'http://104.131.73.180/api/v1/leads'

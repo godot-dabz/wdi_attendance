@@ -10,7 +10,6 @@ User.create([
 {name: "Blanche Orn", email: "blanche_orn46@binkmail.com", role: "producer", password: "1234"},
 {name: "Helene Raynor", email: "helene_raynor45@binkmail.com", role: "instructor", password: "1234"},
 {name: "Rhett Lueilwitz", email: "rhett_lueilwitz17@spamherelots.com", role: "instructor", password: "1234"},
-{name: "Rhett Lueilwitz", email: "rhett_lueilwitz17@spamherelots.com", role: "instructor", password: "1234"},
 {name: "Millie Jacobs", email: "millie_jacobs81@binkmail.com", role: "student", password: "1234"},
 {name: "Wendy Harber", email: "wendy_harber17@suremail.info", role: "student", password: "1234"},
 {name: "Stone Kautzer", email: "stone_kautzer33@binkmail.com", role: "student", password: "1234"},
