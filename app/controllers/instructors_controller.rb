@@ -1,5 +1,6 @@
 class InstructorsController < ApplicationController
 
+
 # create a sessions variable and then get the session params
 
   def new
