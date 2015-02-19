@@ -26,7 +26,11 @@ ActiveRecord::Schema.define(version: 20150218225331) do
   end
 
   create_table "cohorts", force: :cascade do |t|
-    t.string "name"
+    t.string   "name"
+    t.date     "starts_on"
+    t.date     "ends_on"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "users", force: :cascade do |t|

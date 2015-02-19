@@ -1,6 +1,8 @@
-<h1> Students </h1>
-	<ul> 
-		<% @students.each do |student| %> 	
-			<li><%= student.name %>
-		<% end %>
+<h1> Instructors Page </h1>
+
+	<ul>
+		<% @users.each do |user| %>
+			<li><%= link_to user.name, user_path(user) %></li>
+    <%end%>
+
 	</ul>
