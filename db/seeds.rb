@@ -17,5 +17,5 @@ User.create([
 {name: "Stacy Waters", email: "stacy_waters5@spamherelots.com", type: "Student"},
 {name: "Neoma Ferry", email: "neoma_ferry50@safetymail.info", type: "Student"},
 {name: "Fabiola Grimes", email: "fabiola_grimes38@spamherelots.com", type: "Student"}
-])
 
+])
