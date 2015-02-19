@@ -8,7 +8,6 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
 
     render :show
-    binding.pry
   end
 
   def create
