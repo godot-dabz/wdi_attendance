@@ -6,10 +6,11 @@ class ProducersController < ApplicationController
     employee_url = "http://104.131.73.180/api/v1/employees"
     employees = HTTParty.get(employee_url)
     # user = User.find(session[:user_id])
-    user = User.find(6)
+    user = User.find(1)
     @producer = employees["employees"].select do |employee|
       employee["contact"]["email"] == user.email
     end
+    binding.pry
     producer_id = @producer.first["id"]
     @cohorts = cohorts["cohorts"].select do |cohort|
       cohort["producer_id"] == producer_id
