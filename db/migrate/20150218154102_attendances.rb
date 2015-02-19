@@ -5,6 +5,7 @@ class Attendances < ActiveRecord::Migration
       t.date :late
       t.date :unexcused_absences
       t.date :excused_absences
+      t.references :student
       t.timestamps
     end
   end

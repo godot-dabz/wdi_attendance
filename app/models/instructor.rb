@@ -1,12 +1,8 @@
 class Instructor < User
 
-  has_one :class
-  has_one :producer
+  belongs_to :cohort
+  belongs_to :producer
 
-	validates :type, presence: :true
-	validates :email, presence: :true, uniqueness: :true
-	validates :password_digest, presence: :true
-
-	has_secure_password
+  # has_secure_password
 
 end

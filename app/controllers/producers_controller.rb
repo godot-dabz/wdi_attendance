@@ -1,33 +1,57 @@
 class ProducersController < ApplicationController
 
-  def index
-    cohorts_url = "http://104.131.73.180/api/v1/cohorts"
-    cohorts = HTTParty.get(cohorts_url)
+  def new
     employee_url = "http://104.131.73.180/api/v1/employees"
     employees = HTTParty.get(employee_url)
-    # user = User.find(session[:user_id])
-    user = User.find(6)
-    @producer = employees["employees"].select do |employee|
-      employee["contact"]["email"] == user.email
+    @producers = employees["employees"].select do |employee|
+      employee["role"] == "producer"
     end
-    producer_id = @producer.first["id"]
-    @cohorts = cohorts["cohorts"].select do |cohort|
-      cohort["producer_id"] == producer_id
-    end
-  end
-
-  def show
-    cohorts_url = "http://104.131.73.180/api/v1/cohorts/#{params[:id]}/students"
-    students = HTTParty.get(cohorts_url)
-    emails = students["students"].map do |student|
-      student["contact"]["email"]
-    end
-
-    @cohort_students
+    @producer = Producer.new
   end
 
   def create
-	end
+    producer = Producer.new producer_params
+    producer.save
+    redirect_to '/producers'
+  end
+
+  def index
+    @cohorts = Cohort.all
+    # cohorts_url = "http://104.131.73.180/api/v1/cohorts"
+    # cohorts = HTTParty.get(cohorts_url)
+    # employee_url = "http://104.131.73.180/api/v1/employees"
+    # employees = HTTParty.get(employee_url)
+    # # user = User.find(session[:user_id])
+    # # binding.pry
+    # user = User.find(11)
+    # @producer = employees["employees"].select do |employee|
+    #   employee["contact"]["email"] == user.email
+    # end
+    # # binding.pry
+    # producer_id = @producer.first["id"]
+    # @cohorts = cohorts["cohorts"].select do |cohort|
+    #   cohort["producer_id"] == producer_id
+    # end
+  end
+
+  def show
+    # cohorts_url = "http://104.131.73.180/api/v1/cohorts/#{params[:id]}/students"
+    # students = HTTParty.get(cohorts_url)
+    # emails = students["students"].map do |student|
+    #   student["contact"]["email"]
+    # end
+    # binding.pry
+    # @cohort_students
+  end
+
+  def producer_params
+    params.permit(
+      :name,
+      :email
+    )
+  end
 
 end
+
+
 

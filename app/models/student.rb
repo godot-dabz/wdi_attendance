@@ -1,7 +1,8 @@
 class Student < User
-	validates :type, presence: :true 
-	validates :email, presence: :true, uniqueness: :true 
-	validates :password_digest, presence: :true 
-	
-	has_secure_password 
+
+  belongs_to :cohort
+  has_many   :instructors, through: :cohort
+  has_many   :attendances
+  # has_secure_password
+
 end
