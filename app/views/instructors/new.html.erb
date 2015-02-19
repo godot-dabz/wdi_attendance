@@ -1,0 +1,17 @@
+<h1>Add a new Instructor:</h1>
+
+<% @instructors.each do |instructor| %>
+  <h3><%= instructor["data"]["first"] + " " + instructor["data"]["last"] %></h3>
+
+  <% this_cohort = @cohorts["cohorts"].select do |cohort| %>
+    <% cohort["instuctor_ids"].include? instructor["id"] %>
+  <% end %>
+
+  <%= button_to "Add", "/instructors",
+    params: {
+      name:  instructor["data"]["first"] + " " + instructor["data"]["last"],
+      email: instructor["contact"]["email"],
+      cohort_id: this_cohort.first["id"]
+    },
+    method: "post" %>
+<% end %>
