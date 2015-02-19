@@ -20,6 +20,7 @@ Rails.application.routes.draw do
     resources :producers
 
     resources :sessions
+    resources :cohorts
 
 
 
