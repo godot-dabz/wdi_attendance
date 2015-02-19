@@ -1,3 +1,8 @@
 
-<h1>Here are the students:<% @students %></h1>
+<h1>Here are the students:</h1>
+	<ul> 
+		<% @student_first_names.each do |student| %>
+		<li><%= student %></li>
+		<% end %> 
+	</ul>
 
