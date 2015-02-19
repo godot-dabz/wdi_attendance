@@ -6,7 +6,7 @@ class ProducersController < ApplicationController
     employee_url = "http://104.131.73.180/api/v1/employees"
     employees = HTTParty.get(employee_url)
     # user = User.find(session[:user_id])
-    user = User.find(11)
+    user = User.find(14)
     @producer = employees["employees"].select do |employee|
       employee["contact"]["email"] == user.email
     end
@@ -22,7 +22,7 @@ class ProducersController < ApplicationController
     emails = students["students"].map do |student|
       student["contact"]["email"]
     end
-
+    binding.pry
     @cohort_students
   end
 
