@@ -10,7 +10,8 @@
   <%= button_to "Add", "/producers", params: {
       name: producer["data"]["first"] + " " + producer["data"]["last"],
       email: producer["contact"]["email"],
-      cohort_id: this_cohort.first["id"]
+      cohort_id: this_cohort.first["id"],
+      password: "12345"
     },
     method: "post" %>
 <% end %>

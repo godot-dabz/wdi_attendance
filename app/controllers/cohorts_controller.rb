@@ -17,6 +17,8 @@ class CohortsController < ApplicationController
     @cohort = Cohort.find(params[:id])
     # if we're logged in as instructor the ID would be in session
     @instructor = Instructor.find(session[:user_id])
+    # @instructor = Instructor.find(2)
+
   end
 
   def cohort_params

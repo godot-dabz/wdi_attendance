@@ -22,7 +22,7 @@ class StudentsController < ApplicationController
 		# student_url = "http://104.131.73.180/api/v1/students/#{params[:id]}"
 		# student = HTTParty.get(new_student_url)
 		# @student_name = student["students"][0]["data"]["first"]
-		
+
 	end
 
 	def index
@@ -38,7 +38,8 @@ class StudentsController < ApplicationController
 		params.permit(
 			:name,
 			:email,
-			:cohort_id
+			:cohort_id,
+			:password
 		)
 	end
 end
