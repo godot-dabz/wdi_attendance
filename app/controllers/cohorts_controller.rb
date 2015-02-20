@@ -12,6 +12,13 @@ class CohortsController < ApplicationController
     redirect_to '/cohorts'
   end
 
+  # GET cohorts/:id
+  def show
+    @cohort = Cohort.find(params[:id])
+    # if we're logged in as instructor the ID would be in session
+    @instructor = Instructor.find(session[:user_id])
+  end
+
   def cohort_params
     params.permit(
       :name,

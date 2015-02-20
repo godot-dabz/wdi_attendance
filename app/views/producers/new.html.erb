@@ -3,8 +3,8 @@
 <% @producers.each do |producer| %>
   <h3><%= producer["data"]["first"] + " " + producer["data"]["last"] %></h3>
 
-  <% this_cohort = @cohorts.select do |cohort| %>
-    <% cohort["procuder_id"] == producer["id"] %>
+  <% this_cohort = @cohorts["cohorts"].select do |cohort| %>
+    <% cohort["producer_id"] == producer["id"] %>
   <% end %>
 
   <%= button_to "Add", "/producers", params: {

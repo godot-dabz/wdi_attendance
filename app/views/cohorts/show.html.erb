@@ -1,0 +1,25 @@
+<h1><%= @cohort.name %></h1>
+Instructors:
+<% @cohort.instructors.each do |instructor| %>
+  <%= instructor.name %>
+<% end %>
+
+<ul>
+<ul>
+  <% @cohort.students.each do |student| %>
+   <li>
+      <%= student.name %>
+      <!-- cohort_student_attendances -->
+      <!-- POST /cohorts/1/students/2/attendances -->
+
+      <%= form_for([@cohort, student, student.attendances.new]) do |f| %>
+        <%= f.submit "Late" %>
+      <% end %>
+
+      <%= form_for([@cohort, student, student.attendances.new]) do |f| %>
+        <%= f.submit "Unexcused" %>
+      <% end %>
+
+   </li>
+  <% end %>
+</ul>

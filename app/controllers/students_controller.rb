@@ -4,6 +4,7 @@ class StudentsController < ApplicationController
 		@cohort_id = params[:cohort_id]
 		students_url = "http://104.131.73.180/api/v1/cohorts/#{@cohort_id}/students"
 		@students = HTTParty.get(students_url)
+		@data = {name: 'phil', absent: true}.to_json
 	end
 
 	def create

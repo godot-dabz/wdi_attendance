@@ -1,7 +1,8 @@
 class Instructor < User
 
   belongs_to :cohort
-  belongs_to :producer
+  has_many   :students, through: :cohort
+  has_one    :producer, through: :cohort
 
   # has_secure_password
   def self.create_instructor_records()

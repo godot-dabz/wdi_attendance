@@ -1,5 +1,8 @@
 class Producer < User
-  has_many :instructors
+  belongs_to :cohort
+  has_many   :instructors, through: :cohort
+
+  # has_many   :students, through: :cohort
   # has_secure_password
 def self.create_producer_records()
   	employee_url = "http://104.131.73.180/api/v1/employees"

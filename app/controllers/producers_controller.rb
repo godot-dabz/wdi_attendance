@@ -6,6 +6,8 @@ class ProducersController < ApplicationController
     @producers = employees["employees"].select do |employee|
       employee["role"] == "producer"
     end
+    cohort_url = "http://104.131.73.180/api/v1/cohorts"
+    @cohorts = HTTParty.get(cohort_url)
     @producer = Producer.new
   end
 
@@ -47,7 +49,8 @@ class ProducersController < ApplicationController
   def producer_params
     params.permit(
       :name,
-      :email
+      :email,
+      :cohort_id
     )
   end
 
