@@ -21,9 +21,12 @@ Rails.application.routes.draw do
 
     resources :sessions
     resources :cohorts do
-      resources :students
+      resources :students do
+        resources :attendances
+      end
     end
 
+    resources :students
     resources :attendances
 
 
