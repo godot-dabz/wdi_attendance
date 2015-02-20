@@ -50,7 +50,8 @@ class ProducersController < ApplicationController
     params.permit(
       :name,
       :email,
-      :cohort_id
+      :cohort_id,
+      :password
     )
   end
 
