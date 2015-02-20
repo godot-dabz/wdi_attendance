@@ -13,6 +13,7 @@ class ProducersController < ApplicationController
       end
     end
 
+
     cohort_url = "http://104.131.73.180/api/v1/cohorts"
     cohorts = HTTParty.get(cohort_url)
 
@@ -22,6 +23,7 @@ class ProducersController < ApplicationController
     end
 
     binding.pry
+
 
     @producer = Producer.new
   end
@@ -66,8 +68,7 @@ class ProducersController < ApplicationController
   def producer_params
     params.permit(
       :name,
-      :email,
-      :cohort_id
+      :email
     )
   end
 
