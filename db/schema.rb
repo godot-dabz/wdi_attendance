@@ -33,9 +33,10 @@ ActiveRecord::Schema.define(version: 20150218225331) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "name",           null: false
-    t.string   "email",          null: false
+    t.string   "name",            null: false
+    t.string   "email",           null: false
     t.string   "type"
+    t.string   "password_digest"
     t.integer  "cohort_id"
     t.integer  "producer_id"
     t.integer  "instructors_id"

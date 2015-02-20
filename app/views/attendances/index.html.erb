@@ -1,0 +1,6 @@
+<h1>Here are the students:</h1>
+  <ul>
+    <% @students.each do |student| %>
+    <li><%= link_to student.name %> - <%= @attendances %> </li>
+    <% end %>
+  </ul>
