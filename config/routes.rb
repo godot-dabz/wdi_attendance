@@ -24,6 +24,8 @@ Rails.application.routes.draw do
       resources :students
     end
 
+    resources :attendances
+
 
 
   # Example resource route with options:

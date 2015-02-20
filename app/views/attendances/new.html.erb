@@ -1,0 +1,9 @@
+<%=form_for @attendance do |t| %>
+  <%= t.label :student_id, "Student Name:" %>
+  <%= t.collection_select(:student_id, @students, :id, :name) %></br>
+  <%= t.label :absence_type, "Absence Type:" %>
+  <%= t.text_field :absence_type %>
+
+
+  <%= t.submit %>
+<% end %>

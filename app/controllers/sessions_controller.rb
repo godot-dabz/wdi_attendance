@@ -20,5 +20,4 @@ class SessionsController < ApplicationController
     redirect_to :index
   end
 
-
 end
