@@ -13,4 +13,3 @@ class Instructor < User
       end
     end
   end
-end
