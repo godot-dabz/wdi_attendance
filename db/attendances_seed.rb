@@ -1,4 +1,5 @@
 Attendances.create([
+	
 {type: "late", date: "Feb 3" :student_id "1" }
 {type: "unexcused", date: "Feb 3", :student_id "2"}
 {type: "excused", date: "Feb 14", :student_id "3"}
