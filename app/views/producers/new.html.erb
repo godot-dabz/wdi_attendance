@@ -1,12 +1,16 @@
 <h1>Add a new Producer:</h1>
 
-<% @producers_hash.each_pair do |id, producer| %>
-  <h3><%= producer[1]["data"]["first"] + " " + producer[1]["data"]["last"] %></h3>
+<% @producers.each do |producer| %>
+  <h3><%= producer["data"]["first"] + " " + producer["data"]["last"] %></h3>
+
+  <% this_cohort = @cohorts["cohorts"].select do |cohort| %>
+    <% cohort["producer_id"] == producer["id"] %>
+  <% end %>
 
   <%= button_to "Add", "/producers", params: {
-      name: producer[1]["data"]["first"] + " " + producer[1]["data"]["last"],
-      email: producer[1]["contact"]["email"],
-      cohort_id: producer[1]["cohort"]
+      name: producer["data"]["first"] + " " + producer["data"]["last"],
+      email: producer["contact"]["email"],
+      cohort_id: this_cohort.first["id"]
     },
     method: "post" %>
 <% end %>
