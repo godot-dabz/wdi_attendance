@@ -17,7 +17,10 @@ Rails.application.routes.draw do
     resources :instructors
 
     resources :students
-    resources :producers
+    resources :producers do
+      resources :cohorts
+      get '/cohort_overview' => 'cohorts#cohort_overview'
+    end
 
     resources :sessions
     resources :cohorts do

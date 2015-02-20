@@ -12,6 +12,8 @@ class SessionsController < ApplicationController
       # if instructor show all the students for their cohort
       if user.type == "Instructor"
         redirect_to cohort_path(user.cohort)
+      elsif user.type == "Producer"
+        redirect_to producer_cohorts_path(user)
       else
         redirect_to user_path(user)
       end

@@ -12,14 +12,25 @@ class CohortsController < ApplicationController
     redirect_to '/cohorts'
   end
 
+  def index
+    if params[:producer_id]
+      @producer = Producer.find(params[:producer_id])
+      @cohorts = @producer.cohort
+    end
+  end
+
+  def cohort_overview
+
+  end
+
   # GET cohorts/:id
   def show
     @cohort = Cohort.find(params[:id])
     # if we're logged in as instructor the ID would be in session
-    @instructor = Instructor.find(session[:user_id])
+    @user = User.find(session[:user_id])
     # @instructor = Instructor.find(2)
-
   end
+
 
   def cohort_params
     params.permit(
