@@ -1,6 +1,6 @@
 <h1>Hello, <%= @producer.name %>!</h1>
 
-<h2>Here is your Cohort: </h2>
+<h2>Here are your Cohorts: </h2>
 <% @cohorts.each do |cohort| %>
 <h3><%= link_to cohort.name, producer_cohort_overview_path(@producer, cohort) %></h3>
 <!-- "/overview/#{@cohorts}" -->
