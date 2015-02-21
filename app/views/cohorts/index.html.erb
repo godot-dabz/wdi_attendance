@@ -1,4 +1,7 @@
-<h1>Hello, <%= @producer.name %>!</h1>
+<h1>Hello, <%#= @producer.name %>!</h1>
 
 <h2>Here is your Cohort: </h2>
-<h3><%= link_to @cohorts.name, "cohort_overview/#{@cohorts}" %></h3>
+<h3><%#= link_to @cohorts.name, producer_cohort_overview_path(@producer, @cohorts) %></h3>
+<!-- "/overview/#{@cohorts}" -->
+
+<h1>hello from index. it worked.</h1>

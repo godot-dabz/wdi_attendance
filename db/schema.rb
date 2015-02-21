@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(version: 20150218225331) do
     t.string   "name"
     t.date     "starts_on"
     t.date     "ends_on"
+    t.integer  "producer_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -37,6 +38,7 @@ ActiveRecord::Schema.define(version: 20150218225331) do
     t.string   "email",           null: false
     t.string   "type"
     t.string   "password_digest"
+    t.string   "phone_number"
     t.integer  "cohort_id"
     t.integer  "producer_id"
     t.integer  "instructors_id"

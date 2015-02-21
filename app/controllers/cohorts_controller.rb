@@ -9,6 +9,7 @@ class CohortsController < ApplicationController
   def create
     cohort = Cohort.new cohort_params
     cohort.save
+    cohort.create_students
     redirect_to '/cohorts'
   end
 
@@ -19,7 +20,8 @@ class CohortsController < ApplicationController
     end
   end
 
-  def cohort_overview
+  def overview
+    binding.pry
 
   end
 
@@ -34,9 +36,12 @@ class CohortsController < ApplicationController
 
   def cohort_params
     params.permit(
+      :id,
       :name,
       :starts_on,
-      :ends_on
+      :ends_on,
+      :phone_number,
+      :producer_id
     )
   end
 
