@@ -58,4 +58,30 @@ class Student < User
   def total_class_absences
     self.all.attendances.count
   end
+
+    def late_more_than_four_times?
+    lateness = self.attendances.select do |attendance|
+      attendance.absence_type == "Late"
+    end
+    lateness.count >= 3
+  end
+
+  def delete_latenesses
+    lateness = self.attendances.select do |attendance|
+      attendance.absence_type == "Late"
+    end
+    lateness.each do |late|
+      Attendance.delete(late.id)
+    end
+  end
+
+  def converting_four_lates_into_one_absence
+    delete_latenesses
+    attendance = Attendance.new(
+      absence_type: "Unexcused",
+      student_id: self.id,
+      date: Date.today
+    )
+  end
+
 end
