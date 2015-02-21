@@ -15,7 +15,7 @@ class SessionsController < ApplicationController
       elsif user.type == "Producer"
         redirect_to producer_cohorts_path(user)
       else
-        redirect_to user_path(user)
+        redirect_to student_path(user)
       end
     else
       render :index

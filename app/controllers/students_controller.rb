@@ -14,6 +14,11 @@ class StudentsController < ApplicationController
 	end
 
 	def show
+		@student = Student.find(params[:id])
+		@lateness = @student.count_lateness
+		@unexcused = @student.count_unexcused
+		@excused = @student.count_excused
+		binding.pry
 
 		# students_url = "http://104.131.73.180/api/v1/students/"
 		# students = HTTParty.get(students_url)
