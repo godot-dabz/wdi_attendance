@@ -88,6 +88,13 @@ class Cohort < ActiveRecord::Base
     end
   end
 
+  def calculate_total_absence_per_cohort
+    cohort_attendance = [ ]
+    cohort = Cohort.find(params[:cohort_id])
+    cohort.students.each { |s| cohort_attendance << s.attendances }
+
+  end
+
 
 end
 

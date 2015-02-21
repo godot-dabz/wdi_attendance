@@ -29,6 +29,7 @@ class CohortsController < ApplicationController
 
   def overview
     binding.pry
+    cohort = Cohort.find(params[:cohort_id])
 
   end
 
