@@ -1,7 +1,7 @@
 <h1><%= @cohort.name %></h1>
-Instructors:
+Instructors: <br />
 <% @cohort.instructors.each do |instructor| %>
-  <%= instructor.name %>
+  <%= instructor.name %><br />
 <% end %>
 
 
@@ -10,27 +10,21 @@ Instructors:
 <% Cohort.first.students.each do |s| %>
   <% c1_attendance << s.attendances  %>
 <% end %>
-  <%= c1_attendance.flatten.count%>
+
+  <%= c1_attendance.flatten.count %>
+
 
 
 
 
 
 <ul>
-  <%# total= @cohort.students.each do |student| %>
+  <% total= @cohort.students.each do |student| %>
    <li>
-      <%#= student.name %> - Late: <%#= student.count_lateness %>, Unexcused: <%#= unexcused = student.count_unexcused %>, Excused: <%#= student.count_excused %>, Total Absences: <%#=student.total_absences %>
+      <%= student.name %> - Late: <%= student.count_lateness %>, Unexcused: <%= unexcused = student.count_unexcused %>, Excused: <%= student.count_excused %>, Total Absences: <%=student.total_absences %>
       <!-- cohort_student_attendances -->
       <!-- POST /cohorts/1/students/2/attendances -->
-      <%# if unexcused.count > 4 %>
-        <% puts "#{student.name} needs to speak to the producer" %>
-      <%# end %>
 
-
-
-      <%= form_for([@cohort, student, student.attendances.new]) do |f| %>
-        <%= f.submit "Late" %>
-      <% end %>
 
       <%= form_for([@cohort, student, student.attendances.new]) do |f| %>
         <%= f.submit "Unexcused" %>
@@ -39,6 +33,13 @@ Instructors:
       <%= form_for([@cohort, student, student.attendances.new]) do |f| %>
         <%= f.submit "Excused" %>
       <% end %>
+
+
+      <%= form_for([@cohort, student, student.attendances.new]) do |f| %>
+        <%= f.submit "Late" %>
+      <% end %>
+
+
    </li>
   <% end %>
 
