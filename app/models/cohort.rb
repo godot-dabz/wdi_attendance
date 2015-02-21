@@ -43,6 +43,7 @@ class Cohort < ActiveRecord::Base
     students = HTTParty.get(students_url)
     students["students"].each do |student|
       new_student = Student.create(
+        id: student["id"],
         name: student["data"]["first"] + " " + student["data"]["last"],
         email: student["contact"]["email"],
         cohort_id: self.id,
@@ -51,6 +52,41 @@ class Cohort < ActiveRecord::Base
         )
     end
   end
+
+  def create_instructors
+    cohort_url = "http://104.131.73.180/api/v1/cohorts/#{self.id}"
+    cohort = HTTParty.get(cohort_url)
+    employee_url = "http://104.131.73.180/api/v1/employees"
+    employees = HTTParty.get(employee_url)
+
+    instructors_hash = {}
+
+    instructors = cohort["cohorts"].first["instructor_ids"]
+
+    employees["employees"].each do |employee|
+      if employee["role"] == "instructor"
+        key = employee["id"]
+        instructors_hash[key] = employee
+      end
+    end
+
+    cohort["cohorts"].first["instructor_ids"].each do |instructor_id|
+      instructors_hash[instructor_id]["cohort"] = cohort["cohorts"].first["id"]
+    end
+
+    instructors_hash.each_pair do |id, instructor|
+      if instructors.include? id
+        Instructor.create(
+          name:  instructor["data"]["first"] + " " + instructor["data"]["last"],
+          email: instructor["contact"]["email"],
+          cohort_id: instructor["cohort"],
+          id: id,
+          password: "12345"
+        )
+      end
+    end
+  end
+
 
 end
 

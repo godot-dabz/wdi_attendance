@@ -8,15 +8,21 @@ class CohortsController < ApplicationController
 
   def create
     cohort = Cohort.new cohort_params
-    cohort.save
-    cohort.create_students
+    if Cohort.exists?(cohort.id)
+      redirect_to '/new'
+    else
+      cohort.save
+      cohort.create_students
+      cohort.create_instructors
+    end
     redirect_to '/cohorts'
   end
 
   def index
+    @cohorts
     if params[:producer_id]
       @producer = Producer.find(params[:producer_id])
-      @cohorts = @producer.cohort
+      @cohorts = @producer.cohorts
     end
   end
 

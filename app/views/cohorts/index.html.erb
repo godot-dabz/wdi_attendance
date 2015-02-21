@@ -1,7 +1,9 @@
-<h1>Hello, <%#= @producer.name %>!</h1>
+<h1>Hello, <%= @producer.name %>!</h1>
 
 <h2>Here is your Cohort: </h2>
-<h3><%#= link_to @cohorts.name, producer_cohort_overview_path(@producer, @cohorts) %></h3>
+<% @cohorts.each do |cohort| %>
+<h3><%= link_to cohort.name, producer_cohort_overview_path(@producer, cohort) %></h3>
 <!-- "/overview/#{@cohorts}" -->
+<% end %>
 
-<h1>hello from index. it worked.</h1>
+
