@@ -4,6 +4,7 @@ class CreateCohorts < ActiveRecord::Migration
       t.string :name
       t.date :starts_on
       t.date :ends_on
+      t.references :producer
       t.timestamps
     end
   end

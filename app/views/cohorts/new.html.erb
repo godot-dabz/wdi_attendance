@@ -3,9 +3,11 @@
 <% @cohorts["cohorts"].each do |cohort| %>
   <h3><%= link_to cohort["name"], new_cohort_student_path(cohort["id"]) %></h3>
   <%= button_to "Add", "/cohorts", params: {
+      id: cohort["id"],
       name: cohort["name"],
       starts_on: cohort["dates"]["starts_on"],
-      ends_on: cohort["dates"]["ends_on"]
+      ends_on: cohort["dates"]["ends_on"],
+      producer_id: cohort["producer_id"]
     },
   method: "post" %>
 <% end %>
