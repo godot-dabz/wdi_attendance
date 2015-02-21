@@ -88,11 +88,34 @@ class Cohort < ActiveRecord::Base
     end
   end
 
-  def calculate_total_absence_per_cohort
-    cohort_attendance = [ ]
-    cohort = Cohort.find(params[:cohort_id])
-    cohort.students.each { |s| cohort_attendance << s.attendances }
+  def create_array_of_attendance
+    cohort_attendance = []
+    self.students.each { |s| cohort_attendance << s.attendances }
+    cohort_attendance.flatten!
+  end
 
+  def calculate_total_unexcused_absence
+    cohort_attendance = create_array_of_attendance
+    absences = cohort_attendance.select do |attendance|
+      attendance.absence_type == "Unexcused"
+    end
+    absences.count
+  end
+
+  def calculate_total_excused_absence
+    cohort_attendance = create_array_of_attendance
+    absences = cohort_attendance.select do |attendance|
+      attendance.absence_type == "Excused"
+    end
+    absences.count
+  end
+
+  def calculate_total_lates
+    cohort_attendance = create_array_of_attendance
+    lates = cohort_attendance.select do |attendance|
+      attendance.absence_type == "Late"
+    end
+    lates.count
   end
 
 
