@@ -22,11 +22,40 @@ class Student < User
 
 
 
-  def late?
-    attendances.where(date: Date.today, absence_type: "Late").any?
+  def late_on?(date)
+    attendances.where(date: date, absence_type: "Late").any?
+
   end
 
-  def unexcused?
-    attendances.where(date: Date.today, absence_type: "Unexcused").any?
+  def unexcused_on?(date)
+    attendances.where(date: date, absence_type: "Unexcused").any?
+  end
+
+  def excused_on?(date)
+    attendances.where(date: date, absence_type: "Excused").any?
+  end
+
+  def late?
+    late_on?(Date.today)
+  end
+
+  def count_lateness
+    self.attendances.where(absence_type: "Late").length
+  end
+
+  def count_unexcused
+    self.attendances.where(absence_type: "Unexcused").length
+  end
+
+  def count_excused
+    self.attendances.where(absence_type: "Excused").length
+  end
+
+  def total_absences
+    self.attendances.count
+  end
+
+  def total_class_absences
+    self.all.attendances.count
   end
 end

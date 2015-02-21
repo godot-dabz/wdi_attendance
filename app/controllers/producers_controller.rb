@@ -48,9 +48,9 @@ class ProducersController < ApplicationController
 
   def producer_params
     params.permit(
+      :id,
       :name,
       :email,
-      :cohort_id,
       :password
     )
   end
