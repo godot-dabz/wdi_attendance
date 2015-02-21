@@ -35,10 +35,10 @@ class Student < User
   end
 
   def total_absences
-    self.attendances.length
+    self.attendances.count
   end
 
-  def total_class_absences(count_excused, count_unexcused, count_lateness)
-    @total = self.count_excused + self.count_unexcused + self.count_lateness
+  def total_class_absences
+    self.all.attendances.count
   end
 end
