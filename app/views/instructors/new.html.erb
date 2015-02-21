@@ -1,0 +1,15 @@
+<h1>Add a new Instructor:</h1>
+
+<% @instructors_hash.each_pair do |id, instructor| %>
+  <h3><%= instructor["data"]["first"] + " " + instructor["data"]["last"] %></h3>
+
+  <%= button_to "Add", "/instructors",
+    params: {
+      name:  instructor["data"]["first"] + " " + instructor["data"]["last"],
+      email: instructor["contact"]["email"],
+      cohort_id: instructor["cohort"],
+      id: id
+    },
+    method: "post" %>
+<% end %>
+

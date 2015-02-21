@@ -11,16 +11,35 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150217204828) do
+ActiveRecord::Schema.define(version: 20150218225331) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "attendances", force: :cascade do |t|
+    t.string   "absence_type"
+    t.date     "date"
+    t.integer  "student_id",   null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "cohorts", force: :cascade do |t|
+    t.string   "name"
+    t.date     "starts_on"
+    t.date     "ends_on"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "users", force: :cascade do |t|
-    t.string   "name",                        null: false
-    t.string   "email",                       null: false
-    t.integer  "auth_level",      default: 3
+    t.string   "name",            null: false
+    t.string   "email",           null: false
+    t.string   "type"
     t.string   "password_digest"
+    t.integer  "cohort_id"
+    t.integer  "producer_id"
+    t.integer  "instructors_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

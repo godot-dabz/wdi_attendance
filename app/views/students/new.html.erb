@@ -1,0 +1,19 @@
+<h1>Add a new Student to <%= Cohort.find(@cohort_id).name %>:</h1>
+
+<% @students["students"].each do |student| %>
+
+  <h3><%= student["data"]["first"] + " " + student["data"]["last"] %></h3>
+
+  <%= button_to "Add", "/students", params: {
+      name: student["data"]["first"] + " " + student["data"]["last"],
+      email: student["contact"]["email"],
+      cohort_id: @cohort_id
+    } %>
+
+  <% end %>
+
+<script>
+  var dog = <%= raw @data %>
+  // var chart = new Chart(<%= raw @data %>)
+  // $('div').append(chart)
+</script>

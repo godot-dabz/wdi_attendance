@@ -31,6 +31,9 @@ gem 'bcrypt', '~> 3.1.7'
 # gem 'capistrano-rails', group: :development
 gem 'httparty'
 
+gem 'twilio-ruby'
+gem 'puma'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
@@ -42,5 +45,7 @@ group :development, :test do
   gem 'spring'
 
   gem 'pry-rails'
+
+  gem 'ffaker'
 end
 
