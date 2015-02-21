@@ -4,11 +4,11 @@ Instructors:
   <%= instructor.name %>
 <% end %>
 
+
 <ul>
-<ul>
-  <% @cohort.students.each do |student| %>
+  <% total= @cohort.students.each do |student| %>
    <li>
-      <%= student.name %>
+      <%= student.name %> - Late: <%= student.count_lateness %>, Unexcused: <%= student.count_unexcused %>, Excused: <%= student.count_excused %>, Total Absences: <%=student.total_absences %>
       <!-- cohort_student_attendances -->
       <!-- POST /cohorts/1/students/2/attendances -->
 
@@ -20,6 +20,13 @@ Instructors:
         <%= f.submit "Unexcused" %>
       <% end %>
 
+      <%= form_for([@cohort, student, student.attendances.new]) do |f| %>
+        <%= f.submit "Excused" %>
+      <% end %>
    </li>
   <% end %>
+
+<%= total.students %>
+
+
 </ul>
