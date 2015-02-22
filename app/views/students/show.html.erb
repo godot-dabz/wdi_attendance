@@ -1,8 +1,13 @@
+
 <h1><%= @student.name %></h1>
 <!-- Lateness: <%= @lateness %><br>
 Unexcused Absence: <%= @unexcused %><br>
 Excused Absence: <%= @excused %> -->
 
+<div class = "logout">
+  <%= button_to "Logout", '/sessions', method: "delete" %>
+  <br /><%= button_to "Back", :back %><br />
+</div>
 
 <!-- legend template -->
 <ul class="bar-legend"; style="list-style-type: square; font-size: 20px; width: 300px;border: 2px dashed black"><li style="color: rgba(219,20,20,0.7)"></span >Late <%= @lateness %>  </li><li style="color: rgba(28,237,9,0.9)"></span>Excused Absence <%= @excused %> </li><li style="color:rgba(49,88,230,.9)"></span>Unexcused Absence <%= @unexcused %></li></ul>
@@ -43,7 +48,22 @@ Excused Absence: <%= @excused %> -->
     ]
 };
 
+  if(<%= @unexcused %> >= 4) {
+    alert('Please speak to your instructor about missing class.');
+  }
+
 </script>
+
+
+
+<!--
+
+
+<h1><%= @student.name %>, Yo </h1>
+<%= @lateness %>
+<%= @unexcused %>
+<%= @excused %>
+
 
 
 
@@ -85,3 +105,4 @@ Excused Absence: <%= @excused %> -->
   }
 
 </script>
+ -->

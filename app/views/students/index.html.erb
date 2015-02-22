@@ -1,8 +1,14 @@
 
+<div class = "logout">
+  <%= button_to "Logout", '/sessions', method: "delete" %>
+  <br /><%= button_to "Back", :back %><br />
+</div>
+
+
 <h1>Here are the students:</h1>
-	<ul> 
+	<ul>
 		<% @students.each do |student| %>
 		<li><%= student %></li>
-		<% end %> 
+		<% end %>
 	</ul>
 

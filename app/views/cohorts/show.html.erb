@@ -1,3 +1,10 @@
+
+<div class = "logout">
+  <%= button_to "Logout", '/sessions', method: "delete" %>
+  <br /><%= button_to "Back", :back %><br />
+</div>
+
+
 <h1><%= @cohort.name %></h1>
 
 
@@ -23,40 +30,31 @@ Total Class Absences:   <%= c1_attendance.flatten.count %>
 
 
 
-
-
-
-<ul>
+<ul class="unordered-list-of-students">
   <% total= @cohort.students.each do |student| %>
    <li>
+      <%= student.name %> - Late: <%= student.count_lateness %>, Unexcused: <%= student.count_unexcused %>, Excused: <%= student.count_excused %>, Total Absences: <%=student.total_absences %><br />
 
-      <%= student.name %> - Late: <%= student.count_lateness %>, Unexcused: <%= student.count_unexcused %>, Excused: <%= student.count_excused %>, Total Absences: <%= student.total_absences %>
-      <!-- cohort_student_attendances -->
-      <!-- POST /cohorts/1/students/2/attendances -->
-
-      <%= student.name %> - Late: <%= student.count_lateness %>, Unexcused: <%= student.count_unexcused %>, Excused: <%= student.count_excused %>, Total Absences: <%=student.total_absences %>
-
-
-
-      <%= form_for([@cohort, student, student.attendances.new]) do |f| %>
-        <%= f.submit "Unexcused" %>
-      <% end %>
-
-      <%= form_for([@cohort, student, student.attendances.new]) do |f| %>
-        <%= f.submit "Excused" %>
-      <% end %>
-
+      <div class="absences">
 
       <%= form_for([@cohort, student, student.attendances.new]) do |f| %>
         <%= f.submit "Late" %>
       <% end %>
+      </div>
 
+      <div class="absences">
+      <%= form_for([@cohort, student, student.attendances.new]) do |f| %>
+        <%= f.submit "Unexcused" %>
+      <% end %>
+      </div>
 
+      <div class="absences">
+      <%= form_for([@cohort, student, student.attendances.new]) do |f| %>
+        <%= f.submit "Excused" %>
+      <% end %>
+      </div>
+
+      <br /><br />
    </li>
   <% end %>
-
-
-
-
-
 </ul>
