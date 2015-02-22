@@ -18,7 +18,7 @@ class Cohort < ActiveRecord::Base
         phone_number: student["contact"]["phone"],
         password: "12345"
         )
-      Pony.mail(:to => new_student.email, :from => 'me@ga.co', :subject => 'New Account for GA Attendance created', :body => "Hello there, #{new_student.name}! We have created an account for you to track your attendance at GA. Your temporary password is 12345. Please log in soon to change it!")
+      # Pony.mail(:to => new_student.email, :from => 'me@ga.co', :subject => 'New Account for GA Attendance created', :body => "Hello there, #{new_student.name}! We have created an account for you to track your attendance at GA. Your temporary password is 12345. Please log in soon to change it!")
     end
   end
 
@@ -52,7 +52,7 @@ class Cohort < ActiveRecord::Base
           id: id,
           password: "12345"
         )
-        Pony.mail(:to => new_instructor.email, :from => 'me@ga.co', :subject => 'New Account for GA Attendance created', :body => "Hello there, #{new_instructor.name}! We have created an account for you to track your students' attendance at GA. Your temporary password is 12345. Please log in soon to change it!")
+        # Pony.mail(:to => new_instructor.email, :from => 'me@ga.co', :subject => 'New Account for GA Attendance created', :body => "Hello there, #{new_instructor.name}! We have created an account for you to track your students' attendance at GA. Your temporary password is 12345. Please log in soon to change it!")
       end
     end
   end
