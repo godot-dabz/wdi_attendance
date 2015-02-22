@@ -45,6 +45,16 @@ class CohortsController < ApplicationController
     # @instructor = Instructor.find(2)
   end
 
+  def calendar
+    binding.pry
+    @cohort = Cohort.find(params[:cohort_id])
+    @yesterday_excused = @cohort.yesterday_excused
+    @yesterday_unexcused = @cohort.yesterday_unexcused
+    @yesterday_late = @cohort.yesterday_late
+    @today_excused = @cohort.today_excused
+    @today_unexcused = @cohort.today_unexcused
+    @today_late = @cohort.today_late
+  end
 
   def cohort_params
     params.permit(

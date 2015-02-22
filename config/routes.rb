@@ -25,6 +25,7 @@ Rails.application.routes.draw do
 
     # resources :sessions
     resources :cohorts do
+      get '/calendar' => 'cohorts#calendar'
       resources :students do
         resources :attendances
       end

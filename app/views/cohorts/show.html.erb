@@ -3,6 +3,7 @@ Instructors: <br />
 <% @cohort.instructors.each do |instructor| %>
   <%= instructor.name %><br />
 <% end %>
+<%= button_to "Calendar View", cohort_calendar_path(@cohort), method: "get" %>
 
 
 <br /> <br />

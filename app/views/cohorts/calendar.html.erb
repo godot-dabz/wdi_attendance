@@ -1,0 +1,33 @@
+<h1><%= @cohort.name %></h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Late</th>
+    <th>Excused</th>
+    <th>Unexcused</th>
+  </tr>
+    <% @yesterday_late.each do |late| %>
+  <tr>
+    <td><%= late.student.name %></td>
+    <td>x</td>
+  </tr>
+    <% end %>
+    <% @yesterday_excused.each do |excused| %>
+  <tr>
+    <td><%= excused.student.name %></td>
+    <td> </td>
+    <td>x</td>
+  </tr>
+    <% end %>
+    <% @yesterday_unexcused.each do |unexcused| %>
+  <tr>
+    <td><%= unexcused.student.name %></td>
+    <td> </td>
+    <td> </td>
+    <td>x</td>
+  </tr>
+    <% end %>
+</table>
+
+

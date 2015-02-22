@@ -87,7 +87,65 @@ class Cohort < ActiveRecord::Base
     lates.count
   end
 
+  def attendance_today
+    today = self.create_array_of_attendance.select do |a|
+      a[:date] == Date.today
+    end
+  end
 
+  def attendance_yesterday
+    yesterday = self.create_array_of_attendance.select do |a|
+      a[:date] == Date.today - 1
+    end
+  end
+
+  def attendance_per_date(date)
+    day = self.create_array_of_attendance.select do |a|
+      a[:date] == date
+    end
+  end
+
+  def today_unexcused
+    today = attendance_today
+    absences = today.select do |a|
+      a[:absence_type] == "Unexcused"
+    end
+  end
+
+  def today_excused
+    today = attendance_today
+    excused = today.select do |a|
+      a[:absence_type] == "Excused"
+    end
+  end
+
+  def today_late
+    today = attendance_today
+    late = today.select do |a|
+      a[:absence_type] == "Late"
+    end
+  end
+
+  def yesterday_unexcused
+    yesterday = attendance_yesterday
+    absences = yesterday.select do |a|
+      a[:absence_type] == "Unexcused"
+    end
+  end
+
+  def yesterday_excused
+    yesterday = attendance_yesterday
+    excused = yesterday.select do |a|
+      a[:absence_type] == "Excused"
+    end
+  end
+
+  def yesterday_late
+    yesterday = attendance_yesterday
+    late = yesterday.select do |a|
+      a[:absence_type] == "Late"
+    end
+  end
 
 end
 
