@@ -12,12 +12,14 @@ class TwilioController < ApplicationController
     message_body = params["Body"]
     from_number = params["From"]
     SMSLogger.log_text_message from_number, message_body
-    binding.pry
-
+    number = convert_number(from_number)
+    student = Student.find_by(phone_number: number)
+    create_attendance_record
+    send_text_message(response)
   end
 
   def send_text_message(response)
-    number_to_send_to = "4195089075"
+    number_to_send_to = from_number
 
     twilio_sid = TWILIO_KEY_SID
     twilio_token = 'poop'
@@ -33,13 +35,35 @@ class TwilioController < ApplicationController
   end
 
   def response
-    if @message.include? "sick"
+    if message_body.include? "sick"
       response_message = "Feel better. We'll see you tomorrow."
-    elsif @message.include? "late"
+    elsif message_body.include? "late"
       response_message = "Oh no! We'll see you soon!"
     else
       response_message = "I'm sorry! We'll see you tomorrow."
     end
+  end
+
+  def convert_number(number)
+    number[0] = ""
+    number[0] = ""
+    number_array = number.slice
+    number_array.insert(3, "-")
+    number_array.insert(7, "-")
+    number_array.join
+  end
+
+  def create_attendance_record
+    if message_body.include? "sick"
+      absence_type = "Excused"
+    elsif message_body.include? "late"
+      absence_type = "Late"
+    end
+    Attendance.create(
+      absence_type: absence_type,
+      date: Date.today,
+      student_id: student
+      )
   end
 
 end
