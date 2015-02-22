@@ -1,4 +1,4 @@
-<h1>Please Login</h1>
+
 
 <%= form_tag "/sessions", {class: 'login-form'} do %>
   <%= label_tag :email %><br/>
@@ -8,7 +8,5 @@
   <%= label_tag :password %><br/>
   <%= password_field_tag :password %>
   <br/><br/>
-  <div class="login">
   <%= submit_tag "Log in" %>
-</div>
 <% end %>

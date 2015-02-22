@@ -1,9 +1,15 @@
 
+<div class = "logout">
+  <%= button_to "Logout", '/sessions', method: "delete" %>
+  <br /><%= button_to "Back", :back %><br />
+</div>
+
+
 <h1>Hello, <%= @producer.name %>!</h1>
 
 <h2>Here are your Cohorts: </h2>
 <% @cohorts.each do |cohort| %>
-<h3><%= link_to cohort.name, producer_cohort_overview_path(@producer, cohort) %></h3>
+<h3="cohort-name"><%= link_to cohort.name, producer_cohort_overview_path(@producer, cohort) %></h3>
 <!-- "/overview/#{@cohorts}" -->
 <% end %>
 

@@ -20,65 +20,80 @@ require_tree
 
 html, body {
   font-family: Arial;
-  color: black;
+  color: white;
   background-color: #00CED1;
 }
 
-h1{
+/*input.login{
+  width:200px;
+  height:20px;
+  border-radius: 50px;
+}*/
+
+h1.login{
   margin: 0 auto;
   position: relative;
-
   text-align: center;
+
 }
+
+/*h3.cohort-name{
+  margin-left:300px;
+}*/
+
+
 img{
   margin: 0 auto;
   position: relative;
   left:300px;
+
 }
 
-form{
+/*form{
+  top:0px;
   margin: 0 auto;
   position: relative;
-  text-align: center
+  text-align: center;
+  border-radius: 30px;
+}
+*/
+.absences{
+  position: relative;
+  margin: 0 auto;
+  display: inline-block;
+  left: 120px;
+  padding-left:15px;
 }
 
-div.login{
-
-
-}
-
-header {
-  background-color: #323232;
-  color: #DBDBDB;
+.add-cohort-button{
+  left:-200px;
 }
 
 
-.button_to{
- background: #3498db;
-  background-image: -webkit-linear-gradient(top, #3498db, #2980b9);
-  background-image: -moz-linear-gradient(top, #3498db, #2980b9);
-  background-image: -ms-linear-gradient(top, #3498db, #2980b9);
-  background-image: -o-linear-gradient(top, #3498db, #2980b9);
-  background-image: linear-gradient(to bottom, #3498db, #2980b9);
-  -webkit-border-radius: 28;
-  -moz-border-radius: 28;
-  border-radius: 28px;
-  font-family: Arial;
-  color: #ffffff;
-  font-size: 20px;
-  padding: 10px 20px 15px 20px;
+/*ul.unordered-list-of-students{
+  margin-top:-200px;
+}*/
+
+/*div.logout{
+  margin-top:-100px ;
+  border-radius: 50px;
+}*/
+
+/*.button_to{
   text-decoration: none;
   width:50px;
-  border: 10px
+  border: 10px;
+  height:30px;
+  border-radius: 28px;
+  top:0px;
+  left:-650px;
+}*/
+
+/*div.cohort-add-buttons{
+  width:100px;
 
 }
+*/
 
-.button_to:hover{
-  background: #3cb0fd;
-  background-image: -webkit-linear-gradient(top, #3cb0fd, #3498db);
-  background-image: -moz-linear-gradient(top, #3cb0fd, #3498db);
-  background-image: -ms-linear-gradient(top, #3cb0fd, #3498db);
-  background-image: -o-linear-gradient(top, #3cb0fd, #3498db);
-  background-image: linear-gradient(to bottom, #3cb0fd, #3498db);
-  text-decoration: none;
-}
+
+

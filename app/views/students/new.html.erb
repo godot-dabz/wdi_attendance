@@ -1,3 +1,9 @@
+
+<div class = "logout">
+  <%= button_to "Logout", '/sessions', method: "delete" %>
+  <br /><%= button_to "Back", :back %><br />
+</div>
+
 <h1>Add a new Student to <%= Cohort.find(@cohort_id).name %>:</h1>
 
 <% @students["students"].each do |student| %>
