@@ -3,10 +3,11 @@ class Student < User
   belongs_to :cohort
   has_many   :attendances
   has_many   :instructors, through: :cohort
-  # has_one    :producer, through: :cohort
+  has_one    :producer, through: :cohort
 
   has_secure_password
 
+  attr_accessor :flash_notice
 
   def self.create_student_records_for_cohort(cohort_id)
   	students_url = "http://104.131.73.180/api/v1/cohorts/#{cohort_id}/students"
@@ -83,5 +84,6 @@ class Student < User
       date: Date.today
     )
   end
+
 
 end

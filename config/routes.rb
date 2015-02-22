@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'sessions#index'
+  root 'sessions#new'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
@@ -23,7 +23,7 @@ Rails.application.routes.draw do
       end
     end
 
-    resources :sessions
+    # resources :sessions
     resources :cohorts do
       resources :students do
         resources :attendances
@@ -33,7 +33,10 @@ Rails.application.routes.draw do
     resources :students
     resources :attendances
 
-
+    # session links
+  get  "/", to: "sessions#new"           # sign in form
+  post "/sessions", to: "sessions#create"      # log in
+  delete "/sessions", to: "sessions#destroy"   # log out
 
   # Example resource route with options:
   #   resources :products do

@@ -1,5 +1,7 @@
 class StudentsController < ApplicationController
 
+	before_action :authenticate
+
 	def new
 		@cohort_id = params[:cohort_id]
 		students_url = "http://104.131.73.180/api/v1/cohorts/#{@cohort_id}/students"
@@ -18,7 +20,8 @@ class StudentsController < ApplicationController
 		@lateness = @student.count_lateness
 		@unexcused = @student.count_unexcused
 		@excused = @student.count_excused
-		binding.pry
+		# @student.warning
+		flash[:notice] = "hello there"
 
 		# students_url = "http://104.131.73.180/api/v1/students/"
 		# students = HTTParty.get(students_url)

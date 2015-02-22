@@ -1,5 +1,6 @@
 class InstructorsController < ApplicationController
 
+  before_action :authenticate
 # PJ told us create a sessions variable and then get the session params
 
   def new

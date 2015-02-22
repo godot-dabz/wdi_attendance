@@ -1,5 +1,7 @@
 class ProducersController < ApplicationController
 
+  before_action :authenticate
+
   def new
     employee_url = "http://104.131.73.180/api/v1/employees"
     employees = HTTParty.get(employee_url)
