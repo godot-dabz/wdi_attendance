@@ -29,10 +29,19 @@ class CohortsController < ApplicationController
   end
 
   def overview
+
+
+    cohort = Cohort.find(params[:cohort_id])
+    @unexcused_absence = cohort.calculate_total_unexcused_absence
+    @excused_absence = cohort.calculate_total_excused_absence
+    @lates = cohort.calculate_total_lates
+    gon.lates = @lates
+
     @cohort = Cohort.find(params[:cohort_id])
     @unexcused_absence = @cohort.calculate_total_unexcused_absence
     @excused_absence = @cohort.calculate_total_excused_absence
     @lates = @cohort.calculate_total_lates
+
 
   end
 
