@@ -1,6 +1,7 @@
 class Producer < User
   has_many   :cohorts
   has_many   :instructors, through: :cohort
+  has_many   :students, through: :cohort
 
   # has_many   :students, through: :cohort
   # has_secure_password

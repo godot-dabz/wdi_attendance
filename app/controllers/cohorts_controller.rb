@@ -1,5 +1,7 @@
 class CohortsController < ApplicationController
 
+    before_action :authenticate, :authorize_instructor
+
   def new
     url = "http://104.131.73.180/api/v1/cohorts"
     @cohorts = HTTParty.get(url)
@@ -29,11 +31,19 @@ class CohortsController < ApplicationController
 
   def overview
 
+
     cohort = Cohort.find(params[:cohort_id])
     @unexcused_absence = cohort.calculate_total_unexcused_absence
     @excused_absence = cohort.calculate_total_excused_absence
     @lates = cohort.calculate_total_lates
     gon.lates = @lates
+
+    @cohort = Cohort.find(params[:cohort_id])
+    @unexcused_absence = @cohort.calculate_total_unexcused_absence
+    @excused_absence = @cohort.calculate_total_excused_absence
+    @lates = @cohort.calculate_total_lates
+
+
   end
 
   # GET cohorts/:id
@@ -44,6 +54,16 @@ class CohortsController < ApplicationController
     # @instructor = Instructor.find(2)
   end
 
+  def calendar
+    binding.pry
+    @cohort = Cohort.find(params[:cohort_id])
+    @yesterday_excused = @cohort.yesterday_excused
+    @yesterday_unexcused = @cohort.yesterday_unexcused
+    @yesterday_late = @cohort.yesterday_late
+    @today_excused = @cohort.today_excused
+    @today_unexcused = @cohort.today_unexcused
+    @today_late = @cohort.today_late
+  end
 
   def cohort_params
     params.permit(

@@ -3,40 +3,7 @@ class Cohort < ActiveRecord::Base
   has_many   :instructors
   has_many   :students
   belongs_to :producer
-  # has_many   :attendances, through: :students
 
-
-  # def self.create_cohort_records
-  # 	cohort_url = "http://104.131.73.180/api/v1/cohorts"
-  #   cohorts = HTTParty.get(cohort_url)
-  #   cohorts["cohorts"].each do |cohort|
-  #   	cohort = Cohort.new(
-  #   		id: cohort["id"],
-  #       name: cohort["name"],
-  #       starts_on: cohort["dates"]["starts_on"],
-  #       ends_on: cohort["dates"]["ends_on"],
-  #       producer_id: cohort["producer_id"]
-  #       )
-  #     cohort.save
-  #   end
-  # end
-
-  # def self.get_cohort
-  #   cohort_url = "http://104.131.73.180/api/v1/cohorts"
-  #   cohorts = HTTParty.get(cohort_url)
-  #   cohorts["cohorts"].each do |cohort|
-  #     # if cohort["producer_id"]
-  #     new_cohort = Cohort.new(
-  #       id: cohort["id"],
-  #       name: cohort["name"],
-  #       starts_on: cohort["dates"]["starts_on"],
-  #       ends_on: cohort["dates"]["ends_on"],
-  #       producer_id: cohort["producer_id"]
-  #       )
-  #     get_cohort_students(new_cohort.id)
-  #     new_cohort.save
-  #   end
-  # end
 
   # This gets every student that is part of a specific cohort from the API and Creates them in our Database.
   def create_students
@@ -51,6 +18,7 @@ class Cohort < ActiveRecord::Base
         phone_number: student["contact"]["phone"],
         password: "12345"
         )
+      Pony.mail(:to => new_student.email, :from => 'me@ga.co', :subject => 'New Account for GA Attendance created', :body => "Hello there, #{new_student.name}! We have created an account for you to track your attendance at GA. Your temporary password is 12345. Please log in soon to change it!")
     end
   end
 
@@ -77,13 +45,14 @@ class Cohort < ActiveRecord::Base
 
     instructors_hash.each_pair do |id, instructor|
       if instructors.include? id
-        Instructor.create(
+        new_instructor = Instructor.create(
           name:  instructor["data"]["first"] + " " + instructor["data"]["last"],
           email: instructor["contact"]["email"],
           cohort_id: instructor["cohort"],
           id: id,
           password: "12345"
         )
+        Pony.mail(:to => new_instructor.email, :from => 'me@ga.co', :subject => 'New Account for GA Attendance created', :body => "Hello there, #{new_instructor.name}! We have created an account for you to track your students' attendance at GA. Your temporary password is 12345. Please log in soon to change it!")
       end
     end
   end
@@ -118,7 +87,65 @@ class Cohort < ActiveRecord::Base
     lates.count
   end
 
+  def attendance_today
+    today = self.create_array_of_attendance.select do |a|
+      a[:date] == Date.today
+    end
+  end
 
+  def attendance_yesterday
+    yesterday = self.create_array_of_attendance.select do |a|
+      a[:date] == Date.today - 1
+    end
+  end
+
+  def attendance_per_date(date)
+    day = self.create_array_of_attendance.select do |a|
+      a[:date] == date
+    end
+  end
+
+  def today_unexcused
+    today = attendance_today
+    absences = today.select do |a|
+      a[:absence_type] == "Unexcused"
+    end
+  end
+
+  def today_excused
+    today = attendance_today
+    excused = today.select do |a|
+      a[:absence_type] == "Excused"
+    end
+  end
+
+  def today_late
+    today = attendance_today
+    late = today.select do |a|
+      a[:absence_type] == "Late"
+    end
+  end
+
+  def yesterday_unexcused
+    yesterday = attendance_yesterday
+    absences = yesterday.select do |a|
+      a[:absence_type] == "Unexcused"
+    end
+  end
+
+  def yesterday_excused
+    yesterday = attendance_yesterday
+    excused = yesterday.select do |a|
+      a[:absence_type] == "Excused"
+    end
+  end
+
+  def yesterday_late
+    yesterday = attendance_yesterday
+    late = yesterday.select do |a|
+      a[:absence_type] == "Late"
+    end
+  end
 
 end
 

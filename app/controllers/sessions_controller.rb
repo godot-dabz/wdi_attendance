@@ -4,6 +4,10 @@ class SessionsController < ApplicationController
     # @user = User.new
   end
 
+  def new
+  end
+
+
   def create
     # binding.pry
     user = User.find_by({email: params["email"]})
@@ -15,7 +19,7 @@ class SessionsController < ApplicationController
       elsif user.type == "Producer"
         redirect_to producer_cohorts_path(user)
       else
-        redirect_to user_path(user)
+        redirect_to student_path(user)
       end
     else
       render :index
@@ -24,7 +28,7 @@ class SessionsController < ApplicationController
 
   def destroy
     session[:user_id] = nil
-    redirect_to :index
+    redirect_to '/'
   end
 
 end

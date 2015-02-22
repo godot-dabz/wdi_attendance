@@ -3,6 +3,7 @@ Instructors: <br />
 <% @cohort.instructors.each do |instructor| %>
   <%= instructor.name %><br />
 <% end %>
+<%= button_to "Calendar View", cohort_calendar_path(@cohort), method: "get" %>
 
 
 <br /> <br />
@@ -11,7 +12,11 @@ Instructors: <br />
   <% c1_attendance << s.attendances  %>
 <% end %>
 
+
 Total Cohort Absences to Date:<%= c1_attendance.flatten.count %>
+
+
+Total Class Absences:   <%= c1_attendance.flatten.count %>
 
 
 
@@ -21,9 +26,13 @@ Total Cohort Absences to Date:<%= c1_attendance.flatten.count %>
 <ul>
   <% total= @cohort.students.each do |student| %>
    <li>
+
       <%= student.name %> - Late: <%= student.count_lateness %>, Unexcused: <%= student.count_unexcused %>, Excused: <%= student.count_excused %>, Total Absences: <%= student.total_absences %>
       <!-- cohort_student_attendances -->
       <!-- POST /cohorts/1/students/2/attendances -->
+
+      <%= student.name %> - Late: <%= student.count_lateness %>, Unexcused: <%= student.count_unexcused %>, Excused: <%= student.count_excused %>, Total Absences: <%=student.total_absences %>
+
 
 
       <%= form_for([@cohort, student, student.attendances.new]) do |f| %>
