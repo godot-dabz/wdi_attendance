@@ -2,3 +2,40 @@ overview.html.erb
 <%= @unexcused_absence %>
 <%= @excused_absence %>
 <%= @lates %>
+<!-- legend template -->
+<ul class="bar-legend"; style="list-style-type: square; font-size: 20px; width: 300px;border: 2px dashed black"><li style="color: rgba(220,220,220,0.5)"><span style="background-color: rgba(220,220,220,0.5)"></span >Late   </li><li style="color: rgba(151,187,205,0.5)"><span style="background-color:rgba(151,187,205,0.5)"></span>Excused Absence  </li><li style="color:rgba(120,120,120,.9)"><span style="background-color:rgba(120,120,120,.9);"></span>Unexcused Absence</li></ul>
+
+<canvas id="myChart" width="1100" height="500"></canvas>
+
+<script type="text/javascript">
+  var data = {
+    labels: ["Lateness", "Excused Absence", "Unexcused Absence"],
+    datasets: [
+        {
+            label: "Lateness",
+            fillColor: "rgba(220,220,220,0.5)",
+            strokeColor: "rgba(220,220,220,0.8)",
+            highlightFill: "rgba(220,220,220,0.75)",
+            highlightStroke: "rgba(220,220,220,1)",
+            data: [<%= @lates %>]
+        },
+        {
+            label: "Excused Absence",
+            fillColor: "rgba(151,187,205,0.5)",
+            strokeColor: "rgba(151,187,205,0.8)",
+            highlightFill: "rgba(151,187,205,0.75)",
+            highlightStroke: "rgba(151,187,205,1)",
+            data: [<%= @excused_absence %>]
+        },
+        {
+            label: "Unexcused Absence",
+            fillColor: "rgba(120,120,120,.9)",
+            strokeColor: "rgba(220,220,220,0.8)",
+            highlightFill: "rgba(220,220,220,0.75)",
+            highlightStroke: "rgba(220,220,220,1)",
+            data: [<%= @unexcused_absence %>]
+        }
+
+    ]
+};
+</script>
