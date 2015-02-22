@@ -1,13 +1,15 @@
 
 
-Unexcused: <%= @unexcused_absence %>
+<!-- Unexcused: <%= @unexcused_absence %>
 Excused: <%= @excused_absence %>
-Lates <%= @lates %>
+Lates <%= @lates %> -->
 
 <!-- legend template -->
-<ul class="bar-legend"; style="list-style-type: square; font-size: 20px; width: 300px;border: 2px dashed black"><li style="color: rgba(220,220,220,0.5)"><span style="background-color: rgba(220,220,220,0.5)"></span >Late   </li><li style="color: rgba(151,187,205,0.5)"><span style="background-color:rgba(151,187,205,0.5)"></span>Excused Absence  </li><li style="color:rgba(120,120,120,.9)"><span style="background-color:rgba(120,120,120,.9);"></span>Unexcused Absence</li></ul>
+<ul class="bar-legend"; style="list-style-type: square; font-size: 20px; width: 300px;border: 2px dashed black"><li style="color: rgba(219,20,20,0.7)"></span >Late <%= @lates %> </li><li style="color: rgba(28,237,9,0.9)"></span>Excused Absence <%= @excused_absence %> </li><li style="color:rgba(49,88,230,.9)"></span>Unexcused Absence <%= @unexcused_absence %></li></ul>
 
-<canvas id="myChart" width="1100" height="500"></canvas>
+<canvas id="myChart" width="900" height="300"></canvas>
+
+
 
 <script type="text/javascript">
   var data = {
@@ -15,7 +17,7 @@ Lates <%= @lates %>
     datasets: [
         {
             label: "Lateness",
-            fillColor: "rgba(220,220,220,0.5)",
+            fillColor: "rgba(219,20,20,0.7)",
             strokeColor: "rgba(220,220,220,0.8)",
             highlightFill: "rgba(220,220,220,0.75)",
             highlightStroke: "rgba(220,220,220,1)",
@@ -23,7 +25,7 @@ Lates <%= @lates %>
         },
         {
             label: "Excused Absence",
-            fillColor: "rgba(151,187,205,0.5)",
+            fillColor: "rgba(28,237,9,0.9)",
             strokeColor: "rgba(151,187,205,0.8)",
             highlightFill: "rgba(151,187,205,0.75)",
             highlightStroke: "rgba(151,187,205,1)",
@@ -31,7 +33,7 @@ Lates <%= @lates %>
         },
         {
             label: "Unexcused Absence",
-            fillColor: "rgba(120,120,120,.9)",
+            fillColor: "rgba(49,88,230,.9)",
             strokeColor: "rgba(220,220,220,0.8)",
             highlightFill: "rgba(220,220,220,0.75)",
             highlightStroke: "rgba(220,220,220,1)",
