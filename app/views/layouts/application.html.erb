@@ -7,7 +7,9 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<%= button_to "Logout", '/sessions', method: "delete" %>
+  <img src="https://generalassemb.ly/assets/ga-lockup-1788582934ade008a8ea6068b784b8ee.png">
+  <%= button_to "Logout", '/sessions', method: "delete" %>
+  <br /><%= button_to "Back", :back %><br />
 
 
 <%= yield %>
