@@ -6,7 +6,6 @@ class CohortsController < ApplicationController
     url = "http://104.131.73.180/api/v1/cohorts"
     @cohorts = HTTParty.get(url)
     @cohort = Cohort.new
-
   end
 
   def create
@@ -46,7 +45,6 @@ class CohortsController < ApplicationController
   end
 
   def calendar
-    binding.pry
     @cohort = Cohort.find(params[:cohort_id])
     @yesterday_excused = @cohort.yesterday_excused
     @yesterday_unexcused = @cohort.yesterday_unexcused
