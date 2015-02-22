@@ -1,6 +1,6 @@
 class InstructorsController < ApplicationController
 
-  before_action :authenticate
+  before_action :authenticate, :authorize_producer
 # PJ told us create a sessions variable and then get the session params
 
   def new

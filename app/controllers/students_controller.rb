@@ -1,6 +1,6 @@
 class StudentsController < ApplicationController
 
-	before_action :authenticate
+	before_action :authenticate, :authorize_student
 
 	def new
 		@cohort_id = params[:cohort_id]

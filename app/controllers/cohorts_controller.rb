@@ -1,5 +1,7 @@
 class CohortsController < ApplicationController
 
+    before_action :authenticate, :authorize_instructor
+
   def new
     url = "http://104.131.73.180/api/v1/cohorts"
     @cohorts = HTTParty.get(url)
