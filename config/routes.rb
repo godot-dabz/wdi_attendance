@@ -16,7 +16,10 @@ Rails.application.routes.draw do
     resources :users
     resources :instructors
 
-    resources :students
+    resources :students do
+      resources :attendances
+    end
+
     resources :producers do
       resources :cohorts do
         get '/overview' => 'cohorts#overview'
@@ -31,7 +34,6 @@ Rails.application.routes.draw do
       end
     end
 
-    resources :students
     resources :attendances
 
     # session links
