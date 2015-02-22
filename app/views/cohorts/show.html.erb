@@ -1,4 +1,7 @@
 <h1><%= @cohort.name %></h1>
+
+
+
 Instructors: <br />
 <% @cohort.instructors.each do |instructor| %>
   <%= instructor.name %><br />
@@ -21,6 +24,7 @@ Total Class Absences:   <%= c1_attendance.flatten.count %>
   <% total= @cohort.students.each do |student| %>
    <li>
       <%= student.name %> - Late: <%= student.count_lateness %>, Unexcused: <%= student.count_unexcused %>, Excused: <%= student.count_excused %>, Total Absences: <%=student.total_absences %>
+
 
       <%= form_for([@cohort, student, student.attendances.new]) do |f| %>
         <%= f.submit "Unexcused" %>

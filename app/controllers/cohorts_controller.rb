@@ -1,5 +1,7 @@
 class CohortsController < ApplicationController
 
+    before_action :authenticate, :authorize_instructor
+
   def new
     url = "http://104.131.73.180/api/v1/cohorts"
     @cohorts = HTTParty.get(url)
@@ -28,7 +30,10 @@ class CohortsController < ApplicationController
   end
 
   def overview
-    binding.pry
+    @cohort = Cohort.find(params[:cohort_id])
+    @unexcused_absence = @cohort.calculate_total_unexcused_absence
+    @excused_absence = @cohort.calculate_total_excused_absence
+    @lates = @cohort.calculate_total_lates
 
   end
 

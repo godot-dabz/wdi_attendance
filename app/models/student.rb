@@ -3,10 +3,11 @@ class Student < User
   belongs_to :cohort
   has_many   :attendances
   has_many   :instructors, through: :cohort
-  # has_one    :producer, through: :cohort
+  has_one    :producer, through: :cohort
 
   has_secure_password
 
+  attr_accessor :flash_notice
 
   def self.create_student_records_for_cohort(cohort_id)
   	students_url = "http://104.131.73.180/api/v1/cohorts/#{cohort_id}/students"
@@ -58,4 +59,31 @@ class Student < User
   def total_class_absences
     self.all.attendances.count
   end
+
+    def late_more_than_four_times?
+    lateness = self.attendances.select do |attendance|
+      attendance.absence_type == "Late"
+    end
+    lateness.count >= 3
+  end
+
+  def delete_latenesses
+    lateness = self.attendances.select do |attendance|
+      attendance.absence_type == "Late"
+    end
+    lateness.each do |late|
+      Attendance.delete(late.id)
+    end
+  end
+
+  def converting_four_lates_into_one_absence
+    delete_latenesses
+    attendance = Attendance.new(
+      absence_type: "Unexcused",
+      student_id: self.id,
+      date: Date.today
+    )
+  end
+
+
 end

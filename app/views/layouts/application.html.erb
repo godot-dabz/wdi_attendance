@@ -7,6 +7,8 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+<%= button_to "Logout", '/sessions', method: "delete" %>
+<br /><%= button_to "Back", :back %><br />
 
 <%= yield %>
  <%= javascript_include_tag 'application' %>
