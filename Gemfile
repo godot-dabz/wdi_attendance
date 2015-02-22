@@ -47,5 +47,7 @@ group :development, :test do
   gem 'pry-rails'
 
   gem 'ffaker'
+
+  gem 'gon'
 end
 

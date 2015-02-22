@@ -1,7 +1,8 @@
 console.log("main.js linked");
 
+
 var data = {
-    labels: ["Cohort 1", "Cohort 2", "Cohort 3", "Cohort 4", "Cohort 5", "Cohort 6", "Cohort 6"],
+    labels: ["Cohort 1", "Cohort 2", "Cohort 3", "Cohort 4", "Cohort 5", "Cohort 6", "Cohort 7"],
     datasets: [
         {
             label: "Lateness",
@@ -9,7 +10,7 @@ var data = {
             strokeColor: "rgba(220,220,220,0.8)",
             highlightFill: "rgba(220,220,220,0.75)",
             highlightStroke: "rgba(220,220,220,1)",
-            data: [65, 59, 80, 81, 56, 55, 40]
+            data: [gon.lates, 45, 83]
         },
         {
             label: "Excused Absence",

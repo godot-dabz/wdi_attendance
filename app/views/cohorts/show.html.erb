@@ -11,7 +11,7 @@ Instructors: <br />
   <% c1_attendance << s.attendances  %>
 <% end %>
 
-  <%= c1_attendance.flatten.count %>
+Total Cohort Absences to Date:<%= c1_attendance.flatten.count %>
 
 
 
@@ -21,7 +21,7 @@ Instructors: <br />
 <ul>
   <% total= @cohort.students.each do |student| %>
    <li>
-      <%= student.name %> - Late: <%= student.count_lateness %>, Unexcused: <%= unexcused = student.count_unexcused %>, Excused: <%= student.count_excused %>, Total Absences: <%=student.total_absences %>
+      <%= student.name %> - Late: <%= student.count_lateness %>, Unexcused: <%= student.count_unexcused %>, Excused: <%= student.count_excused %>, Total Absences: <%= student.total_absences %>
       <!-- cohort_student_attendances -->
       <!-- POST /cohorts/1/students/2/attendances -->
 

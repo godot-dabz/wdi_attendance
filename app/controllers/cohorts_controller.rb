@@ -28,12 +28,12 @@ class CohortsController < ApplicationController
   end
 
   def overview
-    binding.pry
+
     cohort = Cohort.find(params[:cohort_id])
     @unexcused_absence = cohort.calculate_total_unexcused_absence
     @excused_absence = cohort.calculate_total_excused_absence
     @lates = cohort.calculate_total_lates
-
+    gon.lates = @lates
   end
 
   # GET cohorts/:id
