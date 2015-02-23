@@ -5,13 +5,12 @@ class SessionsController < ApplicationController
   end
 
   def new
-    # $message = ''
   end
 
 
   def create
     # binding.pry
-    $message = ''
+    $message = nil
     user = User.find_by({email: params["email"]})
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id

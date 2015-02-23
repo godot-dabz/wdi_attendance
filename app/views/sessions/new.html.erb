@@ -12,7 +12,7 @@
 <% end %>
 <script type="text/javascript">
   window.onload = function(){
-    if (<%= !$message.empty? %>) {
+    if (<%= $message != nil %>) {
       sweetAlert("Oops!","<%= $message %>", "error");
     }
   };
