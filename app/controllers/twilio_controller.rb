@@ -16,7 +16,7 @@ class TwilioController < ApplicationController
     SMSLogger.log_text_message from_number, message_body
     number = convert_number(from_number)
     student = Student.find_by(phone_number: number)
-    create_attendance_record
+
     send_text_message(response)
   end
 
@@ -29,7 +29,7 @@ class TwilioController < ApplicationController
 
     @twilio_client = Twilio::REST::Client.new twilio_sid, twilio_token
 
-    @twilio_client.account.sms.messages.create(
+    @twilio_client.account.messages.create(
       :from => "+1#{twilio_phone_number}",
       :to => number_to_send_to,
       :body => response
@@ -39,8 +39,10 @@ class TwilioController < ApplicationController
   def response
     if message_body.include? "sick"
       response_message = "Feel better. We'll see you tomorrow."
+      create_attendance_record
     elsif message_body.include? "late"
       response_message = "Oh no! We'll see you soon!"
+      create_attendance_record
     else
       response_message = "I'm sorry! We'll see you tomorrow."
     end
@@ -49,7 +51,7 @@ class TwilioController < ApplicationController
   def convert_number(number)
     number[0] = ""
     number[0] = ""
-    number_array = number.slice
+    number_array = number.split('')
     number_array.insert(3, "-")
     number_array.insert(7, "-")
     number_array.join
