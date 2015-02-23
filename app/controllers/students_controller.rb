@@ -31,6 +31,7 @@ class StudentsController < ApplicationController
 		@students = students["students"].map do |student|
 			student["data"]["first"] + " " + student["data"]["last"]
 
+
 		end
 	end
 
@@ -39,7 +40,8 @@ class StudentsController < ApplicationController
 			:name,
 			:email,
 			:cohort_id,
-			:password
+			:password, 
+			:number
 		)
 	end
 end
