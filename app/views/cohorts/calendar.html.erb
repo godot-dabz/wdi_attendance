@@ -2,6 +2,10 @@
 
 <%= button_to "Home", @home , method: "get" %>
 
+
+<%= link_to "Yesterday", cohort_calendar_path(@cohort, :date => Date.today - 1) %>
+<%= link_to "Today", cohort_calendar_path(@cohort, :date => Date.today) %>
+<h3>Attendance for <%= @date.strftime("%A, %b %d %Y") %></h3>
 <table>
   <tr>
     <th>Name</th>
@@ -9,7 +13,7 @@
     <th>Excused</th>
     <th>Unexcused</th>
   </tr>
-    <% @yesterday_late.each do |late| %>
+    <% @late.each do |late| %>
   <tr>
     <td><%= link_to late.student.name, student_path(late.student) %></td>
     <td>x</td>
@@ -19,7 +23,7 @@
     <td><%= button_to "Delete", attendance_path(late), method: "delete" %></td>
   </tr>
     <% end %>
-    <% @yesterday_excused.each do |excused| %>
+    <% @excused.each do |excused| %>
   <tr>
     <td><%= link_to excused.student.name, student_path(excused.student) %></td>
     <td> </td>
@@ -29,7 +33,7 @@
     <td><%= button_to "Delete", attendance_path(excused), method: "delete" %></td>
   </tr>
     <% end %>
-    <% @yesterday_unexcused.each do |unexcused| %>
+    <% @unexcused.each do |unexcused| %>
   <tr>
     <td><%= link_to unexcused.student.name, student_path(unexcused.student) %></td>
     <td> </td>

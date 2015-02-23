@@ -105,6 +105,27 @@ class Cohort < ActiveRecord::Base
     end
   end
 
+  def unexcused(date)
+    day = attendance_per_date(date)
+    absences = day.select do |a|
+      a[:absence_type] == "Unexcused"
+    end
+  end
+
+  def excused(date)
+    day = attendance_per_date(date)
+    absences = day.select do |a|
+      a[:absence_type] == "Excused"
+    end
+  end
+
+  def late(date)
+    day = attendance_per_date(date)
+    lates = day.select do |a|
+      a[:absence_type] == "Late"
+    end
+  end
+
   def today_unexcused
     today = attendance_today
     absences = today.select do |a|

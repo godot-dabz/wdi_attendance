@@ -43,6 +43,7 @@ Rails.application.routes.draw do
   delete "/sessions", to: "sessions#destroy"   # log out
 
   get "sms", to: "twilio#index"
+  # resources :twilio
 
 
   # Example resource route with options:
