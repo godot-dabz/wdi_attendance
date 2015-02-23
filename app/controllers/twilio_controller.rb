@@ -11,8 +11,8 @@ class TwilioController < ApplicationController
 
   def index
     @client = Twilio::REST::Client.new TWILIO_KEY_SID, TWILIO_AUTH_TOKEN
-    message_body = params["Body"]
-    from_number = params["From"]
+    message_body = @client.account.messages.list[0].body
+    from_number = @client.account.messages.list[0].from
     SMSLogger.log_text_message from_number, message_body
     number = convert_number(from_number)
     student = Student.find_by(phone_number: number)
