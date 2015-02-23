@@ -1,5 +1,7 @@
 class ProducersController < ApplicationController
 
+  before_action :authenticate, :authorize_producer, :make_home_button
+
   def new
     employee_url = "http://104.131.73.180/api/v1/employees"
     employees = HTTParty.get(employee_url)
@@ -48,9 +50,9 @@ class ProducersController < ApplicationController
 
   def producer_params
     params.permit(
+      :id,
       :name,
       :email,
-      :cohort_id,
       :password
     )
   end

@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'sessions#index'
+  root 'sessions#new'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
@@ -16,19 +16,33 @@ Rails.application.routes.draw do
     resources :users
     resources :instructors
 
-    resources :students
-    resources :producers
+    resources :students do
+      resources :attendances
+    end
 
-    resources :sessions
+    resources :producers do
+      resources :cohorts do
+        get '/overview' => 'cohorts#overview'
+      end
+    end
+
+    # resources :sessions
     resources :cohorts do
+      get '/overview' => 'cohorts#overview'
+      get '/calendar' => 'cohorts#calendar'
       resources :students do
         resources :attendances
       end
     end
 
-    resources :students
     resources :attendances
 
+    # session links
+  get  "/", to: "sessions#new"           # sign in form
+  post "/sessions", to: "sessions#create"      # log in
+  delete "/sessions", to: "sessions#destroy"   # log out
+
+  get "sms", to: "twilio#index"
 
 
   # Example resource route with options:

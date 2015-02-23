@@ -1,25 +1,60 @@
+
+<div class = "logout">
+  <%= button_to "Logout", '/sessions', method: "delete" %>
+  <%= button_to "Attendance Chart", cohort_overview_path(@cohort), method: "get" %>
+</div>
+
+
 <h1><%= @cohort.name %></h1>
-Instructors:
+
+
+
+Instructors: <br />
 <% @cohort.instructors.each do |instructor| %>
-  <%= instructor.name %>
+  <%= instructor.name %><br />
+<% end %>
+<%= button_to "Calendar View", cohort_calendar_path(@cohort), method: "get" %>
+
+
+<br /> <br />
+<% c1_attendance = [] %>
+<% Cohort.first.students.each do |s| %>
+  <% c1_attendance << s.attendances  %>
 <% end %>
 
-<ul>
-<ul>
-  <% @cohort.students.each do |student| %>
+
+Total Cohort Absences to Date:<%= c1_attendance.flatten.count %>
+
+
+Total Class Absences:   <%= c1_attendance.flatten.count %>
+
+
+
+<ul class="unordered-list-of-students">
+  <% total= @cohort.students.each do |student| %>
    <li>
-      <%= student.name %>
-      <!-- cohort_student_attendances -->
-      <!-- POST /cohorts/1/students/2/attendances -->
+      <%= student.name %> - Late: <%= student.count_lateness %>, Unexcused: <%= student.count_unexcused %>, Excused: <%= student.count_excused %>, Total Absences: <%=student.total_absences %><br />
+
+      <div class="absences">
 
       <%= form_for([@cohort, student, student.attendances.new]) do |f| %>
         <%= f.submit "Late" %>
       <% end %>
+      </div>
 
+      <div class="absences">
       <%= form_for([@cohort, student, student.attendances.new]) do |f| %>
         <%= f.submit "Unexcused" %>
       <% end %>
+      </div>
 
+      <div class="absences">
+      <%= form_for([@cohort, student, student.attendances.new]) do |f| %>
+        <%= f.submit "Excused" %>
+      <% end %>
+      </div>
+
+      <br /><br />
    </li>
   <% end %>
 </ul>

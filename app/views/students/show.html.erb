@@ -1,1 +1,110 @@
-<h1><%= @student_name %>Yo </h1>
+
+<h1><%= @student.name %></h1>
+<!-- Lateness: <%= @lateness %><br>
+Unexcused Absence: <%= @unexcused %><br>
+Excused Absence: <%= @excused %> -->
+
+<div class = "logout">
+  <%= button_to "Logout", '/sessions', method: "delete" %>
+  <%= button_to "Home", @home , method: "get" %>
+</div>
+
+<!-- legend template -->
+<ul class="bar-legend"; style="list-style-type: square; font-size: 20px; width: 300px;border: 2px dashed black"><li style="color: rgba(219,20,20,0.7)"></span >Late <%= @lateness %>  </li><li style="color: rgba(28,237,9,0.9)"></span>Excused Absence <%= @excused %> </li><li style="color:rgba(49,88,230,.9)"></span>Unexcused Absence <%= @unexcused %></li></ul>
+
+<canvas id="myChart"></canvas>
+
+
+
+<script type="text/javascript">
+  var data = {
+    labels: ["<%= @student.name %>"],
+    datasets: [
+        {
+            label: "Lateness",
+            fillColor: "rgba(219,20,20,0.7)",
+            strokeColor: "rgba(220,220,220,0.8)",
+            highlightFill: "rgba(220,220,220,0.75)",
+            highlightStroke: "rgba(220,220,220,1)",
+            data: [<%= @lateness %>]
+        },
+        {
+            label: "Excused Absence",
+            fillColor: "rgba(28,237,9,0.9)",
+            strokeColor: "rgba(151,187,205,0.8)",
+            highlightFill: "rgba(151,187,205,0.75)",
+            highlightStroke: "rgba(151,187,205,1)",
+            data: [<%= @excused %>]
+        },
+        {
+            label: "Unexcused Absence",
+            fillColor: "rgba(49,88,230,.9)",
+            strokeColor: "rgba(220,220,220,0.8)",
+            highlightFill: "rgba(220,220,220,0.75)",
+            highlightStroke: "rgba(220,220,220,1)",
+            data: [<%= @unexcused %>]
+        }
+
+    ]
+};
+
+  if(<%= @unexcused %> >= 4) {
+    window.onload = function(){
+        swal("You have missed class 4 or more times!", "Please speak to an instructor.", "warning");
+    }
+  }
+
+</script>
+
+
+
+<!--
+
+
+<h1><%= @student.name %>, Yo </h1>
+<%= @lateness %>
+<%= @unexcused %>
+<%= @excused %>
+
+
+
+
+
+<script type="text/javascript">
+  var data = {
+    labels: ["<%= @student.name %>"],
+    datasets: [
+        {
+            label: "Lateness",
+            fillColor: "rgba(220,220,220,0.5)",
+            strokeColor: "rgba(220,220,220,0.8)",
+            highlightFill: "rgba(220,220,220,0.75)",
+            highlightStroke: "rgba(220,220,220,1)",
+            data: [<%= @lateness %>]
+        },
+        {
+            label: "Excused Absence",
+            fillColor: "rgba(151,187,205,0.5)",
+            strokeColor: "rgba(151,187,205,0.8)",
+            highlightFill: "rgba(151,187,205,0.75)",
+            highlightStroke: "rgba(151,187,205,1)",
+            data: [<%= @excused %>]
+        },
+        {
+            label: "Unexcused Absence",
+            fillColor: "rgba(120,120,120,.9)",
+            strokeColor: "rgba(220,220,220,0.8)",
+            highlightFill: "rgba(220,220,220,0.75)",
+            highlightStroke: "rgba(220,220,220,1)",
+            data: [<%= @unexcused %>]
+        }
+
+    ]
+};
+
+  if(<%= @unexcused %> >= 4) {
+    alert('Please speak to your instructor about missing class.');
+  }
+
+</script>
+ -->

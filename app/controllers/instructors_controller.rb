@@ -1,5 +1,6 @@
 class InstructorsController < ApplicationController
 
+  before_action :authenticate, :authorize_producer, :make_home_button
 # PJ told us create a sessions variable and then get the session params
 
   def new

@@ -5,7 +5,11 @@ class CreateUser < ActiveRecord::Migration
       t.string :email, null: false, uniqueness: true
       t.string :type
       t.string :password_digest
+
       t.integer :number
+
+      t.string :phone_number
+
 
       # students belong to cohort, have one attendance
       t.references :cohort

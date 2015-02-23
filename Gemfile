@@ -33,6 +33,10 @@ gem 'httparty'
 
 gem 'twilio-ruby'
 gem 'puma'
+gem 'pony'
+
+# gem for Heroku
+gem 'rails_12factor'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -47,5 +51,7 @@ group :development, :test do
   gem 'pry-rails'
 
   gem 'ffaker'
+
+  gem 'gon'
 end
 

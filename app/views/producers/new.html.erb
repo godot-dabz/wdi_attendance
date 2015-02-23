@@ -1,3 +1,10 @@
+
+<div class = "logout">
+  <%= button_to "Logout", '/sessions', method: "delete" %>
+  <br /><%= button_to "Back", :back %><br />
+</div>
+
+
 <h1>Add a new Producer:</h1>
 
 <% @producers.each do |producer| %>
@@ -8,9 +15,9 @@
   <% end %>
 
   <%= button_to "Add", "/producers", params: {
+      id: producer["id"],
       name: producer["data"]["first"] + " " + producer["data"]["last"],
       email: producer["contact"]["email"],
-      cohort_id: this_cohort.first["id"],
       password: "12345"
     },
     method: "post" %>

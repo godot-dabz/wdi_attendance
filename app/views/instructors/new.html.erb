@@ -1,3 +1,8 @@
+
+<div class = "logout">
+  <%= button_to "Logout", '/sessions', method: "delete" %>
+  <br /><%= button_to "Back", :back %><br />
+</div>
 <h1>Add a new Instructor:</h1>
 
 <% @instructors_hash.each_pair do |id, instructor| %>

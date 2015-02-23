@@ -1,12 +1,3 @@
-
-<div class = "logout">
-  <%= button_to "Logout", '/sessions', method: "delete" %>
-  <br /><%= button_to "Back", :back %><br />
-</div>
-
-
-
-
 <%=form_for @attendance do |t| %>
   <%= t.label :student_id, "Student Name:" %>
   <%= t.collection_select(:student_id, @students, :id, :name) %><br /><br />

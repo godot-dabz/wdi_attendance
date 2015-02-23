@@ -14,3 +14,4 @@
 //= require jquery_ujs
 //= require chart
 //= require chart_test
+//= require_tree .
