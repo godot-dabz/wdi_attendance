@@ -10,6 +10,7 @@ class TwilioController < ApplicationController
   skip_before_filter :force_ssl
 
   def index
+    @client = Twilio::REST::Client.new TWILIO_KEY_SID, TWILIO_AUTH_TOKEN
     message_body = params["Body"]
     from_number = params["From"]
     SMSLogger.log_text_message from_number, message_body
