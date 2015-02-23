@@ -13,7 +13,7 @@ class TwilioController < ApplicationController
 
 
   def index
-    @client = Twilio::REST::Client.new TWILIO_KEY_SID, TWILIO_AUTH_TOKEN
+    @client = Twilio::REST::Client.new ENV['TWILIO_KEY_SID'], ENV['TWILIO_AUTH_TOKEN']
     @message_body = @client.account.messages.list[0].body
     @from_number = @client.account.messages.list[0].from
     # SMSLogger.log_text_message @from_number, @message_body
@@ -26,8 +26,8 @@ class TwilioController < ApplicationController
   def send_text_message(response)
     number_to_send_to = @from_number
 
-    twilio_sid = TWILIO_KEY_SID
-    twilio_token = TWILIO_AUTH_TOKEN
+    twilio_sid = ENV['TWILIO_KEY_SID']
+    twilio_token = ENV['TWILIO_AUTH_TOKEN']
     twilio_phone_number = TWILIO_NUMBER
 
     @twilio_client = Twilio::REST::Client.new twilio_sid, twilio_token
