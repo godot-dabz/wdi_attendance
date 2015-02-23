@@ -19,7 +19,7 @@ class TwilioController < ApplicationController
     # SMSLogger.log_text_message @from_number, @message_body
     number = convert_number(@from_number)
     @student = Student.find_by(phone_number: number)
-
+    puts @message_body
     send_text_message(response)
   end
 

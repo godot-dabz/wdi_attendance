@@ -4,15 +4,15 @@
 Unexcused Absence: <%= @unexcused %><br>
 Excused Absence: <%= @excused %> -->
 
-<div class = "logout">
-  <%= button_to "Logout", '/sessions', method: "delete" %>
-  <%= button_to "Home", @home , method: "get" %>
+<!-- legend template -->
+<canvas id="myChart" width="900" height="300"></canvas>
+<!-- legend template -->
+<div class="row">
+    <div class="four columns" style="color: rgba(219,20,20,0.7)">Late <%= @lates %> </div>
+    <div class="four columns" style="color: rgba(28,237,9,0.9)">Excused Absence <%= @excused_absence %></div>
+    <div class="four columns" style="color:rgba(49,88,230,.9)">Unexcused Absence <%= @unexcused_absence %></div>
 </div>
 
-<!-- legend template -->
-<ul class="bar-legend"; style="list-style-type: square; font-size: 20px; width: 300px;border: 2px dashed black"><li style="color: rgba(219,20,20,0.7)"></span >Late <%= @lateness %>  </li><li style="color: rgba(28,237,9,0.9)"></span>Excused Absence <%= @excused %> </li><li style="color:rgba(49,88,230,.9)"></span>Unexcused Absence <%= @unexcused %></li></ul>
-
-<canvas id="myChart"></canvas>
 
 
 

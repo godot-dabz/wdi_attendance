@@ -1,15 +1,18 @@
 <%= button_to "Students", cohort_students_path(@cohort), method: "get" %>
-<%= button_to "Home", @home , method: "get" %>
 
 <!-- Unexcused: <%= @unexcused_absence %>
 Excused: <%= @excused_absence %>
 Lates <%= @lates %> -->
 
-<!-- legend template -->
-<ul class="bar-legend"; style="list-style-type: square; font-size: 20px; width: 300px;border: 2px dashed black"><li style="color: rgba(219,20,20,0.7)"></span >Late <%= @lates %> </li><li style="color: rgba(28,237,9,0.9)"></span>Excused Absence <%= @excused_absence %> </li><li style="color:rgba(49,88,230,.9)"></span>Unexcused Absence <%= @unexcused_absence %></li></ul>
+
 
 <canvas id="myChart" width="900" height="300"></canvas>
-
+<!-- legend template -->
+<div class="row">
+    <div class="four columns" style="color: rgba(219,20,20,0.7)">Late <%= @lates %> </div>
+    <div class="four columns" style="color: rgba(28,237,9,0.9)">Excused Absence <%= @excused_absence %></div>
+    <div class="four columns" style="color:rgba(49,88,230,.9)">Unexcused Absence <%= @unexcused_absence %></div>
+</div>
 
 
 <script type="text/javascript">

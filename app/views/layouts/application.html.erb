@@ -7,13 +7,29 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <img src="https://generalassemb.ly/assets/ga-lockup-1788582934ade008a8ea6068b784b8ee.png">
+  <nav class="navbar">
+    <div class="container">
+      <img class="logo" src="http://blog.generalassemb.ly/blog/wp-content/uploads/2014/03/generalassembly-open-graph.png">
+
+      <ul class="navbar-list">
+        <%if @current_user %>
+          <li class="navbar-item">
+            <%= link_to "Logout", '/sessions', method: "delete", class: 'navbar-link' %>
+          </li>
+          <li class="navbar-item">
+            <%= link_to "Home", @home , method: "get", class: "navbar-link" %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </nav>
 
 
-
-<%= yield %>
-  <%= javascript_include_tag 'application' %>
-  <script type="text/javascript" src='https://cdnjs.cloudflare.com/ajax/libs/sweetalert/0.4.2/sweet-alert.min.js'></script>
-
+    <!-- .container is main centered wrapper -->
+    <div class="container main">
+      <%= yield %>
+    </div>
+    <%= javascript_include_tag 'application' %>
+    <script type="text/javascript" src='https://cdnjs.cloudflare.com/ajax/libs/sweetalert/0.4.2/sweet-alert.min.js'></script>
 </body>
 </html>

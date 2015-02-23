@@ -1,10 +1,4 @@
 
-<div class = "logout">
-  <%= button_to "Logout", '/sessions', method: "delete" %>
-  <%= button_to "Home", @home , method: "get" %>
-</div>
-
-
 <h1>Here are the students:</h1>
 	<ul>
 		<% @students.each do |student| %>
