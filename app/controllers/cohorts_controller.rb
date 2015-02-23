@@ -1,4 +1,4 @@
-class CohortsController < ApplicationController
+œ class CohortsController < ApplicationController
 
     before_action :authenticate, :authorize_instructor, :make_home_button
 
