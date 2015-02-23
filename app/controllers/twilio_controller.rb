@@ -47,7 +47,7 @@ class TwilioController < ApplicationController
       create_attendance_record
       response_message = "Oh no #{@student.name}! We'll see you soon!"
     else
-      response_message = "I'm sorry #{@student.name}! We'll see you tomorrow."
+      response_message = "I'm sorry #{@student.name}, I'm not sure what you're saying! Are you sick or going to be late? We'll see you tomorrow."
     end
   end
 
@@ -66,6 +66,9 @@ class TwilioController < ApplicationController
     elsif @message_body.include? "late"
       absence_type = "Late"
     end
+    puts "****************************************************************"
+    puts "I ran!"
+    puts "****************************************************************"
     Attendance.create(
       absence_type: absence_type,
       date: Date.today,
