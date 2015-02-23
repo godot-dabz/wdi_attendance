@@ -13,8 +13,8 @@ class TwilioController < ApplicationController
     @client = Twilio::REST::Client.new TWILIO_KEY_SID, TWILIO_AUTH_TOKEN
     @message_body = @client.account.messages.list[0].body
     @from_number = @client.account.messages.list[0].from
-    SMSLogger.log_text_message from_number, message_body
-    number = convert_number(from_number)
+    # SMSLogger.log_text_message @from_number, @message_body
+    number = convert_number(@from_number)
     @student = Student.find_by(phone_number: number)
 
     send_text_message(response)
@@ -38,11 +38,11 @@ class TwilioController < ApplicationController
 
   def response
     if @message_body.include? "sick"
+      create_attendance_record
       response_message = "Feel better. We'll see you tomorrow."
-      create_attendance_record
     elsif @message_body.include? "late"
-      response_message = "Oh no! We'll see you soon!"
       create_attendance_record
+      response_message = "Oh no! We'll see you soon!"
     else
       response_message = "I'm sorry! We'll see you tomorrow."
     end
@@ -66,7 +66,7 @@ class TwilioController < ApplicationController
     Attendance.create(
       absence_type: absence_type,
       date: Date.today,
-      student_id: @student
+      student_id: @student.id
       )
   end
 
