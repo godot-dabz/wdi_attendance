@@ -23,7 +23,7 @@ class TwilioController < ApplicationController
     send_text_message(response)
   end
 
-  def send_text_message(response)
+  def send_text_message(message)
     number_to_send_to = @from_number
 
     twilio_sid = ENV['TWILIO_KEY_SID']
@@ -35,19 +35,19 @@ class TwilioController < ApplicationController
     @twilio_client.account.messages.create(
       :from => "+1#{twilio_phone_number}",
       :to => number_to_send_to,
-      :body => response
+      :body => message
     )
   end
 
   def response
     if @message_body.include? "sick"
       create_attendance_record
-      response_message = "Feel better. We'll see you tomorrow."
+      response_message = "Feel better #{@student.name}. We'll see you tomorrow."
     elsif @message_body.include? "late"
       create_attendance_record
-      response_message = "Oh no! We'll see you soon!"
+      response_message = "Oh no #{@student.name}! We'll see you soon!"
     else
-      response_message = "I'm sorry! We'll see you tomorrow."
+      response_message = "I'm sorry #{@student.name}! We'll see you tomorrow."
     end
   end
 
