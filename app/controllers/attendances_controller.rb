@@ -1,4 +1,7 @@
 class AttendancesController < ApplicationController
+
+  before_action :make_home_button
+
   def new
     @attendance = Attendance.new
     @students = Student.all

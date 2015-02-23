@@ -10,3 +10,10 @@
   <br/><br/>
   <%= submit_tag "Log in" %>
 <% end %>
+<script type="text/javascript">
+  window.onload = function(){
+    if (<%= !$message.empty? %>) {
+      sweetAlert("Oops!","<%= $message %>", "error");
+    }
+  };
+</script>

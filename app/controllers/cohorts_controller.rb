@@ -1,6 +1,6 @@
 class CohortsController < ApplicationController
 
-    before_action :authenticate, :authorize_instructor
+    before_action :authenticate, :authorize_instructor, :make_home_button
 
   def new
     url = "http://104.131.73.180/api/v1/cohorts"
@@ -30,7 +30,6 @@ class CohortsController < ApplicationController
 
   def overview
 
-
     cohort = Cohort.find(params[:cohort_id])
     @unexcused_absence = cohort.calculate_total_unexcused_absence
     @excused_absence = cohort.calculate_total_excused_absence
@@ -41,8 +40,6 @@ class CohortsController < ApplicationController
     @unexcused_absence = @cohort.calculate_total_unexcused_absence
     @excused_absence = @cohort.calculate_total_excused_absence
     @lates = @cohort.calculate_total_lates
-
-
   end
 
   # GET cohorts/:id

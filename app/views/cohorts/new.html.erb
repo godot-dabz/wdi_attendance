@@ -2,7 +2,7 @@
 
 <div class = "logout">
   <%= button_to "Logout", '/sessions', method: "delete" %>
-  <br /><%= button_to "Back", :back %><br />
+  <%= button_to "Home", @home , method: "get" %>
 </div>
 
 <h1>Add a Cohort:</h1>

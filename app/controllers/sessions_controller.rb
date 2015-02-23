@@ -5,11 +5,13 @@ class SessionsController < ApplicationController
   end
 
   def new
+    # $message = ''
   end
 
 
   def create
     # binding.pry
+    $message = ''
     user = User.find_by({email: params["email"]})
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
@@ -22,7 +24,8 @@ class SessionsController < ApplicationController
         redirect_to student_path(user)
       end
     else
-      render :index
+      $message = "Your username or password was incorrect."
+      redirect_to '/'
     end
   end
 

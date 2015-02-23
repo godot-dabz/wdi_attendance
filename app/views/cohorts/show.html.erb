@@ -1,7 +1,7 @@
 
 <div class = "logout">
   <%= button_to "Logout", '/sessions', method: "delete" %>
-  <br /><%= button_to "Back", :back %><br />
+  <%= button_to "Attendance Chart", cohort_overview_path(@cohort), method: "get" %>
 </div>
 
 

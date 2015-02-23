@@ -3,7 +3,7 @@
 <head>
   <title>WdiAttendance</title>
   <%= stylesheet_link_tag    'application', media: 'all' %>
-
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/0.4.2/sweet-alert.css">
   <%= csrf_meta_tags %>
 </head>
 <body>
@@ -12,6 +12,8 @@
 
 
 <%= yield %>
- <%= javascript_include_tag 'application' %>
+  <%= javascript_include_tag 'application' %>
+  <script type="text/javascript" src='https://cdnjs.cloudflare.com/ajax/libs/sweetalert/0.4.2/sweet-alert.min.js'></script>
+
 </body>
 </html>

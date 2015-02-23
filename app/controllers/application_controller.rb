@@ -40,6 +40,14 @@ class ApplicationController < ActionController::Base
     redirect_to '/login' unless current_user
   end
 
-  helper_method(:current_user, :authenticate, :authorize_producer, :authorize_instructor, :authorize_student)
+  def make_home_button
+    if @current_user.type == "Producer"
+      @home = producer_cohorts_path(@current_user)
+    elsif @current_user.type == "Instructor"
+      @home = cohort_path(@current_user.cohort)
+    end
+  end
+
+  helper_method(:current_user, :authenticate, :authorize_producer, :authorize_instructor, :authorize_student, :make_home_button)
 
 end

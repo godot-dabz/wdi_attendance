@@ -6,7 +6,7 @@ Excused Absence: <%= @excused %> -->
 
 <div class = "logout">
   <%= button_to "Logout", '/sessions', method: "delete" %>
-  <br /><%= button_to "Back", :back %><br />
+  <%= button_to "Home", @home , method: "get" %>
 </div>
 
 <!-- legend template -->
@@ -49,7 +49,9 @@ Excused Absence: <%= @excused %> -->
 };
 
   if(<%= @unexcused %> >= 4) {
-    alert('Please speak to your instructor about missing class.');
+    window.onload = function(){
+        swal("You have missed class 4 or more times!", "Please speak to an instructor.", "warning");
+    }
   }
 
 </script>

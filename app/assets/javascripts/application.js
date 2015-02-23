@@ -14,8 +14,4 @@
 //= require jquery_ujs
 //= require chart
 //= require chart_test
-  $(document).ready(function(){
-    $("button").on('click',function(){
-      alert("hi");
-    });
-  });
+//= require_tree .
