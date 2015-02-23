@@ -38,7 +38,6 @@ ActiveRecord::Schema.define(version: 20150218225331) do
     t.string   "email",           null: false
     t.string   "type"
     t.string   "password_digest"
-    t.string   "phone_number"
     t.integer  "cohort_id"
     t.integer  "producer_id"
     t.integer  "instructors_id"

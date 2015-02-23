@@ -1,4 +1,4 @@
-class CohortsController < ApplicationController
+œ class CohortsController < ApplicationController
 
     before_action :authenticate, :authorize_instructor, :make_home_button
 
@@ -6,6 +6,7 @@ class CohortsController < ApplicationController
     url = "http://104.131.73.180/api/v1/cohorts"
     @cohorts = HTTParty.get(url)
     @cohort = Cohort.new
+    
   end
 
   def create

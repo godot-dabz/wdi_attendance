@@ -25,7 +25,17 @@ class StudentsController < ApplicationController
 	end
 
 	def index
+
+		students_url = "http://104.131.73.180/api/v1/students/"
+		students = HTTParty.get(students_url)
+		@students = students["students"].map do |student|
+			student["data"]["first"] + " " + student["data"]["last"]
+
+
+		end
+
 		@students = Cohort.find(params[:cohort_id]).students
+
 	end
 
 	def student_params
@@ -33,7 +43,8 @@ class StudentsController < ApplicationController
 			:name,
 			:email,
 			:cohort_id,
-			:password
+			:password, 
+			:number
 		)
 	end
 end
