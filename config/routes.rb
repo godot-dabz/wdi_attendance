@@ -42,7 +42,7 @@ Rails.application.routes.draw do
   post "/sessions", to: "sessions#create"      # log in
   delete "/sessions", to: "sessions#destroy"   # log out
 
-  get "sms", to: "twilio#index"
+  post "sms", to: "twilio#index"
   # resources :twilio
 
 
