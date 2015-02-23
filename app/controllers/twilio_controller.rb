@@ -7,7 +7,8 @@ class TwilioController < ApplicationController
   #   ga_url = 'http://104.131.73.180/api/v1/leads'
   #   @apiusers = HTTParty.get(url)
   # end
-  skip_before_filter :force_ssl
+  # skip_before_filter :force_ssl
+  # skip_before_filter  :verify_authenticity_token
 
   def index
     @client = Twilio::REST::Client.new TWILIO_KEY_SID, TWILIO_AUTH_TOKEN
