@@ -11,17 +11,17 @@ class TwilioController < ApplicationController
 
   def index
     @client = Twilio::REST::Client.new TWILIO_KEY_SID, TWILIO_AUTH_TOKEN
-    message_body = @client.account.messages.list[0].body
-    from_number = @client.account.messages.list[0].from
+    @message_body = @client.account.messages.list[0].body
+    @from_number = @client.account.messages.list[0].from
     SMSLogger.log_text_message from_number, message_body
     number = convert_number(from_number)
-    student = Student.find_by(phone_number: number)
+    @student = Student.find_by(phone_number: number)
 
     send_text_message(response)
   end
 
   def send_text_message(response)
-    number_to_send_to = from_number
+    number_to_send_to = @from_number
 
     twilio_sid = TWILIO_KEY_SID
     twilio_token = TWILIO_AUTH_TOKEN
@@ -37,10 +37,10 @@ class TwilioController < ApplicationController
   end
 
   def response
-    if message_body.include? "sick"
+    if @message_body.include? "sick"
       response_message = "Feel better. We'll see you tomorrow."
       create_attendance_record
-    elsif message_body.include? "late"
+    elsif @message_body.include? "late"
       response_message = "Oh no! We'll see you soon!"
       create_attendance_record
     else
@@ -58,15 +58,15 @@ class TwilioController < ApplicationController
   end
 
   def create_attendance_record
-    if message_body.include? "sick"
+    if @message_body.include? "sick"
       absence_type = "Excused"
-    elsif message_body.include? "late"
+    elsif @message_body.include? "late"
       absence_type = "Late"
     end
     Attendance.create(
       absence_type: absence_type,
       date: Date.today,
-      student_id: student
+      student_id: @student
       )
   end
 
