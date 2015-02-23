@@ -15,8 +15,8 @@ class Instructor < User
     end
   end
 
-    end # select
-  end # self.create method
+    #end # select
+  #end # self.create method
 
   def create_instructors
     employee_url = "http://104.131.73.180/api/v1/employees"

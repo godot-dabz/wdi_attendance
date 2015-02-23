@@ -7,6 +7,7 @@ Excused Absence: <%= @excused %> -->
 <div class = "logout">
   <%= button_to "Logout", '/sessions', method: "delete" %>
   <%= button_to "Home", @home , method: "get" %>
+  <%= button_to "Students", '/cohorts/:cohort_id/students', method: 'get' %>
 </div>
 
 <!-- legend template -->
