@@ -53,7 +53,6 @@ class TwilioController < ApplicationController
 
   def convert_number(number)
     number[0] = ""
-    number[0] = ""
     number_array = number.split('')
     number_array.insert(3, "-")
     number_array.insert(7, "-")
