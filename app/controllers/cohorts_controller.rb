@@ -51,13 +51,11 @@ class CohortsController < ApplicationController
   end
 
   def calendar
+    @date = params[:date].to_date
     @cohort = Cohort.find(params[:cohort_id])
-    @yesterday_excused = @cohort.yesterday_excused
-    @yesterday_unexcused = @cohort.yesterday_unexcused
-    @yesterday_late = @cohort.yesterday_late
-    @today_excused = @cohort.today_excused
-    @today_unexcused = @cohort.today_unexcused
-    @today_late = @cohort.today_late
+    @excused = @cohort.excused(@date)
+    @unexcused = @cohort.unexcused(@date)
+    @late = @cohort.late(@date)
   end
 
   def cohort_params

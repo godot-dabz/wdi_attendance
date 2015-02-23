@@ -1,12 +1,13 @@
 class TwilioController < ApplicationController
   # include Webhookable
   # skip_before_action :verify_authenticity_token
-  # TWILIO_NUMBER =  "5594713142"
+  TWILIO_NUMBER =  "5594713142"
 
   # def reply
   #   ga_url = 'http://104.131.73.180/api/v1/leads'
   #   @apiusers = HTTParty.get(url)
   # end
+  skip_before_filter :force_ssl
 
   def index
     message_body = params["Body"]
@@ -22,8 +23,8 @@ class TwilioController < ApplicationController
     number_to_send_to = from_number
 
     twilio_sid = TWILIO_KEY_SID
-    twilio_token = 'poop'
-    twilio_phone_number = '5594713142'
+    twilio_token = TWILIO_AUTH_TOKEN
+    twilio_phone_number = TWILIO_NUMBER
 
     @twilio_client = Twilio::REST::Client.new twilio_sid, twilio_token
 

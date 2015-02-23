@@ -2,6 +2,7 @@
 <div class = "logout">
   <%= button_to "Logout", '/sessions', method: "delete" %>
   <%= button_to "Attendance Chart", cohort_overview_path(@cohort), method: "get" %>
+  <%= link_to "Calendar View", cohort_calendar_path(@cohort, :date => Date.today) %>
 </div>
 
 
@@ -13,7 +14,6 @@ Instructors: <br />
 <% @cohort.instructors.each do |instructor| %>
   <%= instructor.name %><br />
 <% end %>
-<%= button_to "Calendar View", cohort_calendar_path(@cohort), method: "get" %>
 
 
 <br /> <br />
