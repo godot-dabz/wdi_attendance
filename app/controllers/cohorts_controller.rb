@@ -16,7 +16,7 @@ class CohortsController < ApplicationController
       cohort.save
       cohort.create_students
       cohort.create_instructors
-      redirect_to '/cohorts'
+      redirect_to @home
     end
   end
 
