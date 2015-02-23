@@ -35,16 +35,15 @@ class ApplicationController < ActionController::Base
     @current_user ||= User.find(session[:user_id]) if session[:user_id]
   end
 
-
   def authenticate
     redirect_to '/login' unless current_user
   end
 
   def make_home_button
-    if @current_user.type == "Producer"
-      @home = producer_cohorts_path(@current_user)
-    elsif @current_user.type == "Instructor"
-      @home = cohort_path(@current_user.cohort)
+    if current_user.type == "Producer"
+      @home = producer_cohorts_path(current_user)
+    elsif current_user.type == "Instructor"
+      @home = cohort_path(current_user.cohort)
     end
   end
 
