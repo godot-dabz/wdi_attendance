@@ -1,6 +1,5 @@
 
 <div class = "logout">
-  <%= button_to "Logout", '/sessions', method: "delete" %>
   <%= button_to "Add new Cohorts", '/cohorts/new', method: "get" %>
 </div>
 
@@ -8,9 +7,12 @@
 <h1>Hello, <%= @producer.name %>!</h1>
 
 <h2>Here are your Cohorts: </h2>
+<ul>
 <% @cohorts.each do |cohort| %>
-<h3="cohort-name"><%= link_to cohort.name, producer_cohort_overview_path(@producer, cohort) %></h3>
+  <li>
+    <h4 class="cohort-name"><%= link_to cohort.name, producer_cohort_overview_path(@producer, cohort) %></h4>
+  </li>
 <!-- "/overview/#{@cohorts}" -->
 <% end %>
-
+</ul>
 

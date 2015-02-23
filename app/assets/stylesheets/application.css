@@ -10,19 +10,79 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
- *=
+ *= require_tree
  *= require_self
  */
 
-require_self
-require_tree
+* {
+  text-align: center;
+}
+
+.main.container {
+  margin-top: 40px;
+}
+
+.logo {
+  float: left;
+  height: 60px;
+}
+
+.has-docked-nav .navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+.navbar-list {
+  list-style: none;
+  margin-bottom: 0;
+}
+
+.navbar-item {
+  position: relative;
+  float: right;
+  margin-bottom: 0;
+}
+
+.navbar-link {
+  text-transform: uppercase;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .2rem;
+  margin-right: 35px;
+  text-decoration: none;
+  line-height: 6.5rem;
+  color: #222;
+}
+.navbar, .navbar-spacer {
+  display: block;
+  width: 100%;
+  height: 6.5rem;
+  background: #fff;
+  z-index: 99;
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+}
+
+@media (min-width: 750px)
+  .navbar, .navbar-spacer {
+    display: block;
+    width: 100%;
+    height: 6.5rem;
+    background: #fff;
+    z-index: 99;
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+  }
+}
 
 
+/*
 html, body {
   font-family: Arial;
   color: white;
   background-color: #00CED1;
-}
+}*/
 
 /*input.login{
   width:200px;
@@ -30,18 +90,18 @@ html, body {
   border-radius: 50px;
 }*/
 
-h1.login{
+/*h1.login{
   margin: 0 auto;
   position: relative;
   text-align: center;
 
-}
+}*/
 
 /*h3.cohort-name{
   margin-left:300px;
 }*/
 
-
+/*
 img{
   margin: 0 auto;
   position: relative;
@@ -49,14 +109,14 @@ img{
 
 }
 
-/*form{
+form{
   top:0px;
   margin: 0 auto;
   position: relative;
   text-align: center;
   border-radius: 30px;
 }
-*/
+
 .absences{
   position: relative;
   margin: 0 auto;
@@ -68,7 +128,7 @@ img{
 .add-cohort-button{
   left:-200px;
 }
-
+*/
 
 /*ul.unordered-list-of-students{
   margin-top:-200px;

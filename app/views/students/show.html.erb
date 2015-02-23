@@ -4,11 +4,6 @@
 Unexcused Absence: <%= @unexcused %><br>
 Excused Absence: <%= @excused %> -->
 
-<div class = "logout">
-  <%= button_to "Logout", '/sessions', method: "delete" %>
-  <%= button_to "Home", @home , method: "get" %>
-</div>
-
 <!-- legend template -->
 <ul class="bar-legend"; style="list-style-type: square; font-size: 20px; width: 300px;border: 2px dashed black"><li style="color: rgba(219,20,20,0.7)"></span >Late <%= @lateness %>  </li><li style="color: rgba(28,237,9,0.9)"></span>Excused Absence <%= @excused %> </li><li style="color:rgba(49,88,230,.9)"></span>Unexcused Absence <%= @unexcused %></li></ul>
 
