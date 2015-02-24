@@ -63,3 +63,11 @@
   border-top: 1px solid #eee;
   border-bottom: 1px solid #eee;
 }
+
+.login {
+  border: 1px solid #eee;
+  border-radius: 5px;
+  padding-top: 30px;
+  width: 400px;
+  margin: 0 auto;
+}

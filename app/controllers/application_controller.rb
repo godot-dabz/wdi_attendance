@@ -41,9 +41,9 @@ class ApplicationController < ActionController::Base
   end
 
   def make_home_button
-    if @current_user.type == "Producer"
+    if current_user.type == "Producer"
       @home = producer_cohorts_path(@current_user)
-    elsif @current_user.type == "Instructor"
+    elsif current_user.type == "Instructor"
       @home = cohort_path(@current_user.cohort)
     end
   end

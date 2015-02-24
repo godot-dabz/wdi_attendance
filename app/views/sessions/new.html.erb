@@ -1,5 +1,5 @@
 
-
+<div class="login">
 <%= form_tag "/sessions", {class: 'login-form'} do %>
   <%= label_tag :email %><br/>
   <%= email_field_tag :email %>
@@ -10,6 +10,7 @@
   <br/><br/>
   <%= submit_tag "Log in" %>
 <% end %>
+</div>
 <script type="text/javascript">
   window.onload = function(){
     if (<%= $message != nil %>) {
