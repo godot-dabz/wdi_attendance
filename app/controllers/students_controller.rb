@@ -20,12 +20,14 @@ class StudentsController < ApplicationController
 		@lateness = @student.count_lateness
 		@unexcused = @student.count_unexcused
 		@excused = @student.count_excused
-
-
 	end
 
 	def index
 		@students = Cohort.find(params[:cohort_id]).students
+	end
+
+	def edit
+		@student = Student.find(params[:id])
 	end
 
 	def student_params
