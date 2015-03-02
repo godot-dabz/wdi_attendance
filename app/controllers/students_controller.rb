@@ -20,6 +20,9 @@ class StudentsController < ApplicationController
 		@lateness = @student.count_lateness
 		@unexcused = @student.count_unexcused
 		@excused = @student.count_excused
+		if (current_user != @student) && (current_user.type == "Student")
+			redirect_to student_path(current_user)
+		end
 	end
 
 	def index
